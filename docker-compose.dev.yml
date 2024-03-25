@@ -3,6 +3,7 @@ services:
     build:
       context: ./container
       dockerfile: Dockerfile
+    container_name: notify_app
     volumes:
       - './src:/data'
     networks:
@@ -11,12 +12,12 @@ services:
       - mailpit
     depends_on:
       - redis
-      - memcached
     ports:
       - 80:80
 
   redis:
     image: 'redis:alpine'
+    container_name: notify_redis
     volumes:
       - './container/redis:/data'
     networks:
@@ -28,11 +29,6 @@ services:
         - ping
       retries: 3
       timeout: 5s
-
-  memcached:
-    image: 'memcached:alpine'
-    networks:
-      - notify
 
 networks:
   notify:
