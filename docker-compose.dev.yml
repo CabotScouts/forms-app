@@ -1,0 +1,43 @@
+services:
+  app:
+    build:
+      context: ./container
+      dockerfile: Dockerfile
+    volumes:
+      - './src:/data'
+    networks:
+      - notify
+      - mysql
+      - mailpit
+    depends_on:
+      - redis
+      - memcached
+    ports:
+      - 80:80
+
+  redis:
+    image: 'redis:alpine'
+    volumes:
+      - './container/redis:/data'
+    networks:
+      - notify
+    healthcheck:
+      test:
+        - CMD
+        - redis-cli
+        - ping
+      retries: 3
+      timeout: 5s
+
+  memcached:
+    image: 'memcached:alpine'
+    networks:
+      - notify
+
+networks:
+  notify:
+    driver: bridge
+  mysql:
+    external: true
+  mailpit:
+    external: true
