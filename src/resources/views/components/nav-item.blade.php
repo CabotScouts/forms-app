@@ -1,3 +1,3 @@
-<li class="nav-item @if ($route == Route::currentRouteName()) active @endif">
+<li @class(['nav-item', 'active' => $route == Route::currentRouteName()])>
   <a class="nav-link" href="{{ route($route) }}">{{ $name }}</a>
 </li>
