@@ -37,12 +37,10 @@ Route::controller(FormController::class)->group(function () {
   // NAN form - info, form, submission, and return to submission-in-progress
   Route::get('/nan', 'NAN')->name('nan');
   Route::post('/nan', 'processNAN');
-  Route::get('/nan/resume/{token}', 'continueNAN')->name('nan.continue');
 
   // AAN form - info, form, submission, and return to submission-in-progress
   Route::get('/aan', 'AAN')->name('aan');
   Route::post('/aan', 'processAAN');
-  Route::get('/aan/resume/{token}', 'continueAAN')->name('aan.continue');
 });
 
 Route::controller(RootController::class)->group(function () {
