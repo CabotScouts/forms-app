@@ -10,7 +10,7 @@ use App\Http\Controllers\UserController;
 
 Route::controller(AuthController::class)->group(function () {
   Route::get('/login', 'login')->name('auth.login');
-  Route::get('/login/launch', 'oauthRedirect')->name('auth.oauth.redirect');
+  Route::get('/login/redirect', 'oauthRedirect')->name('auth.oauth.redirect');
   Route::get('/login/return', 'oauthReturn')->name('auth.oauth.return');
   Route::get('/logout', 'logout')->name('auth.logout');
 });
