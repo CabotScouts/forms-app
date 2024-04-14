@@ -34,18 +34,14 @@ Route::controller(ApprovalsController::class)->prefix('approvals')->group(functi
 });
 
 Route::controller(FormController::class)->group(function () {
-  // NAN form - info, form, submission, and return to submission-in-progress
   Route::get('/nan', 'NAN')->name('nan');
   Route::post('/nan', 'processNAN');
-
-  // AAN form - info, form, submission, and return to submission-in-progress
   Route::get('/aan', 'AAN')->name('aan');
   Route::post('/aan', 'processAAN');
 });
 
 Route::controller(RootController::class)->group(function () {
   Route::get('/', 'index')->name('root.index');
-  Route::get('/help', 'help')->name('root.help');
 });
 
 Route::controller(UserController::class)->prefix('users')->group(function () {
