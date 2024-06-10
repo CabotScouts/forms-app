@@ -15,7 +15,7 @@
 </head>
 
 <body class="bg-light">
-  <nav class="navbar sticky-top navbar-expand-md navbar-dark bg-primary">
+  <nav class="navbar navbar-expand-md navbar-dark bg-primary">
     <div class="container-lg">
       <a class="navbar-brand" href="{{ route('root.index') }}"><svg class="svg-icon icon-med icon-white"
           viewBox="0 0 20 20">
