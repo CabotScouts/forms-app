@@ -1,5 +1,8 @@
-ARG ALPINE_VERSION=3.19
+ARG ALPINE_VERSION="latest"
 FROM alpine:${ALPINE_VERSION}
+
+ARG UID
+ARG GID
 
 WORKDIR /data
 
@@ -43,6 +46,11 @@ RUN apk add --no-cache \
   supervisor \
   sqlite
 
+ENV UID=${UID}
+ENV GID=${GID}
+RUN addgroup -g ${GID} --system runner
+RUN adduser -G runner --system -D -s /bin/sh -u ${UID} runner
+
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY conf.d /etc/nginx/conf.d/
 COPY fpm-pool.conf /etc/php83/php-fpm.d/www.conf
@@ -55,12 +63,9 @@ RUN chmod +x /init
 RUN mkdir /.composer
 RUN chmod -R ugo+rw /.composer
 
-RUN chown -R nobody.nobody /data /run /var/lib/nginx /var/log/nginx
+RUN chown -R runner.runner /data /run /var/lib/nginx /var/log/nginx
 
-RUN ln -s /usr/bin/php83 /usr/bin/php
-
-USER nobody
-
+USER runner
 EXPOSE 80
 ENTRYPOINT [ "/init" ]
 HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1/up || exit 1
