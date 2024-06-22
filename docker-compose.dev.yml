@@ -1,12 +1,6 @@
 services:
   app:
-    build:
-      context: ./container
-      dockerfile: Dockerfile
-      args:
-        - UID=${UID:-1000}
-        - GID=${GID:-1000}
-    container_name: notify_app
+    build: container
     volumes:
       - './src:/data'
     networks:
@@ -20,7 +14,6 @@ services:
 
   redis:
     image: 'redis:alpine'
-    container_name: notify_redis
     volumes:
       - './container/redis:/data'
     networks:
