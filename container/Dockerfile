@@ -1,9 +1,6 @@
 ARG ALPINE_VERSION="latest"
 FROM alpine:${ALPINE_VERSION}
 
-ARG UID
-ARG GID
-
 WORKDIR /data
 
 RUN apk add --no-cache \
@@ -46,8 +43,8 @@ RUN apk add --no-cache \
   supervisor \
   sqlite
 
-ENV UID=${UID}
-ENV GID=${GID}
+ARG UID=1000
+ARG GID=1000
 RUN addgroup -g ${GID} --system runner
 RUN adduser -G runner --system -D -s /bin/sh -u ${UID} runner
 
