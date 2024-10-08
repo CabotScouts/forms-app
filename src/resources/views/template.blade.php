@@ -40,15 +40,13 @@
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav mr-auto mb-2 mb-md-0">
           @include('components.nav-item', ['name' => 'Home', 'route' => 'root.index'])
-          @include('components.nav-item', ['name' => 'Nights Away', 'route' => 'nan'])
-          @include('components.nav-item', ['name' => 'Adventurous Activity', 'route' => 'aan'])
         </ul>
 
         <ul class="navbar-nav mb-2 mb-md-0">
           @guest
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('auth.login') }}">Login</a>
-            </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('auth.login') }}">Login</a>
+          </li>
           @endguest
         </ul>
       </div>

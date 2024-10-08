@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 class RootController
 {
   public function index()
@@ -9,8 +11,8 @@ class RootController
     return view('index');
   }
 
-  public function help()
+  public function submit(Request $request)
   {
-    return view('help');
+    return $request->all();
   }
 }

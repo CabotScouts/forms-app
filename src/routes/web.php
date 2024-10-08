@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ApprovalsController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\FormController;
 use App\Http\Controllers\RootController;
 use App\Http\Controllers\UserController;
 
@@ -33,15 +32,9 @@ Route::controller(ApprovalsController::class)->prefix('approvals')->group(functi
   Route::post('/contacts/update', 'updateContacts')->name('approvals.contacts.update');
 });
 
-Route::controller(FormController::class)->group(function () {
-  Route::get('/nan', 'NAN')->name('nan');
-  Route::post('/nan', 'processNAN');
-  Route::get('/aan', 'AAN')->name('aan');
-  Route::post('/aan', 'processAAN');
-});
-
 Route::controller(RootController::class)->group(function () {
   Route::get('/', 'index')->name('root.index');
+  Route::post('/submit', 'submit');
 });
 
 Route::controller(UserController::class)->prefix('users')->group(function () {
