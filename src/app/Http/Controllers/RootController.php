@@ -11,6 +11,11 @@ class RootController
     return view('index');
   }
 
+  public function guidance()
+  {
+    return view('index');
+  }
+
   public function submit(Request $request)
   {
     return $request->all();

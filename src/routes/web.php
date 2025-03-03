@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RootController;
-use App\Http\Controllers\UserController;
 
 Route::controller(AuthController::class)->group(function () {
   Route::get('/login', 'login')->name('auth.login');
@@ -15,10 +14,6 @@ Route::controller(AuthController::class)->group(function () {
 
 Route::controller(RootController::class)->group(function () {
   Route::get('/', 'index')->name('root.index');
+  Route::get('/guidance', 'guidance')->name('root.guidance');
   Route::post('/submit', 'submit');
-});
-
-Route::controller(UserController::class)->prefix('users')->group(function () {
-  Route::get('/', 'list')->name('users.list');
-  Route::post('/update', 'update')->name('users.update');
 });
