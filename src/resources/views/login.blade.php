@@ -23,7 +23,7 @@
         <div class="bg-light m-4 p-4">
           <h3 class="py-2">District Sign In</h3>
           <p>
-            This login page is intended for designated members in the District to sign in to view and manage
+            This login page is intended for designated members in the District to sign in to view
             submitted notifications.
           </p>
           <p>
