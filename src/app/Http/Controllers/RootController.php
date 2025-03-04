@@ -8,12 +8,7 @@ class RootController
 {
   public function index()
   {
-    return view('index');
-  }
-
-  public function guidance()
-  {
-    return view('index');
+    return view('notification');
   }
 
   public function submit(Request $request)
