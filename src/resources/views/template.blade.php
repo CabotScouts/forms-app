@@ -43,6 +43,7 @@
           <li><a class="nav-link" href="https://cabotscouts.org.uk" target="_blank">Cabot Scouts</a></li>
         </ul>
 
+        {{--
         <ul class="navbar-nav mb-2 mb-md-0">
           @guest
           <li class="nav-item">
@@ -50,6 +51,7 @@
           </li>
           @endguest
         </ul>
+        --}}
       </div>
     </div>
   </nav>
