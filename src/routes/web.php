@@ -14,5 +14,5 @@ Route::controller(AuthController::class)->group(function () {
 
 Route::controller(RootController::class)->group(function () {
   Route::get('/', 'index')->name('root.index');
-  Route::post('/submit', 'root.submit');
+  Route::post('/submit', 'submit')->name('root.submit');
 });
