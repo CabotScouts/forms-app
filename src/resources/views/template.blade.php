@@ -40,7 +40,6 @@
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav mr-auto mb-2 mb-md-0">
           @include('components.nav-item', ['name' => 'Submit Notification', 'route' => 'root.index'])
-          @include('components.nav-item', ['name' => 'Notification Guidance', 'route' => 'root.guidance'])
           <li><a class="nav-link" href="https://cabotscouts.org.uk" target="_blank">Cabot Scouts</a></li>
         </ul>
 
