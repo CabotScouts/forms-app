@@ -24,7 +24,7 @@
           <h3 class="py-2">District Sign In</h3>
           <p>
             This login page is intended for designated members in the District to sign in to view
-            submitted notifications.
+            information about submitted notifications.
           </p>
           <p>
             <strong>
