@@ -1,0 +1,27 @@
+# notify
+
+## MVP tasks
+* file uploads working from filepond component
+* uploaded files related to notification being submitted and route to view
+* get form data sent out as email to DLV, Programme Team Lead(?), LIC, submitter, permit holder, GLV/TL (so many emails...) -> this will need sendgrid? SMTP relay might see this as spam...
+
+## Improvements to add
+### User Experience
+* show form data after submission + printable view
+* select Group from dropdown -> get GLV/TL email from this
+
+### Uploads
+* job to prune notifications older than three months (*TODO: confirm how long we need to keep*)
+* job to delete uploads older than three months (*TODO: confirm this time also*)
+
+### Administration
+* login with District workspace accounts
+* list of upcoming adventurous activities
+* general stats about activities (which Groups etc.)
+* Groups list + workflow to add/update/delete
+* Contact emails - for Groups and also for programme team/DLV
+* approvals workflow
+* permissions to cover all the above
+
+### Tests
+* add some I suppose
