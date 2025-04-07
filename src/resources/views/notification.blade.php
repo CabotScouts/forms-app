@@ -42,20 +42,21 @@
 
             <div class="form-group">
               <label for="lic-name">Name<span class="text-danger">*</span></label>
-              <input type="text" class="form-control" id="lic_name" name="lic-name"
-                value="{{ old('lic-name', $form) }}" required>
+              <input type="text" class="form-control @error('lic-name') is-invalid @enderror" id="lic-name"
+                name="lic-name" value="{{ old('lic-name', $form) }}" required>
             </div>
 
             <div class="form-group">
               <label for="lic-email">Email Address<span class="text-danger">*</span></label>
-              <input type="email" class="form-control" id="lic-email" name="lic-email"
-                value="{{ old('lic-email', $form) }}" required>
+              <input type="email" class="form-control @error('lic-email') is-invalid @enderror" id="lic-email"
+                name="lic-email" value="{{ old('lic-email', $form) }}" required>
             </div>
 
             <div class="form-group mb-0">
               <label for="lic-phone">Phone Number<span class="text-danger">*</span></label>
-              <input type="tel" inputmode="numeric" pattern="[0-9]*" class="form-control" id="lic-phone"
-                name="lic-phone" value="{{ old('lic-phone', $form) }}" required>
+              <input type="tel" inputmode="numeric" pattern="[0-9]*"
+                class="form-control @error('lic-phone') is-invalid @enderror" id="lic-phone" name="lic-phone"
+                value="{{ old('lic-phone', $form) }}" required>
             </div>
 
           </div>
@@ -73,14 +74,14 @@
 
             <div class="form-group">
               <label for="submitter-name">Name</label>
-              <input type="text" class="form-control" id="submitter-name" name="submitter-name"
-                value="{{ old('submitter-name', $form) }}">
+              <input type="text" class="form-control @error('submitter-name') is-invalid @enderror" id="submitter-name"
+                name="submitter-name" value="{{ old('submitter-name', $form) }}">
             </div>
 
             <div class="form-group mb-0">
               <label for="submitter-email">Email Address</label>
-              <input type="email" class="form-control" id="submitter-email" name="submitter-email"
-                value="{{ old('submitter-email', $form) }}">
+              <input type="email" class="form-control @error('submitter-email') is-invalid @enderror"
+                id="submitter-email" name="submitter-email" value="{{ old('submitter-email', $form) }}">
               <small class="form-text text-muted">A copy of this form will be sent to you for your records.</small>
             </div>
 
@@ -98,8 +99,8 @@
             <div class="form-row">
               <div class="form-group col-md-12">
                 <label for="group">Group<span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="group" name="group" value="{{ old('group', $form) }}"
-                  required>
+                <input type="text" class="form-control @error('group') is-invalid @enderror" id="group"
+                  name="group" value="{{ old('group', $form) }}" required>
                 <small class="form-text text-muted">
                   Enter <em>14-24</em> for Explorer or Network events, or <em>Programme Team</em> for District-organised
                   events.
@@ -108,8 +109,8 @@
 
               <div class="form-group col-md-12">
                 <label for="section">Section/Explorer Unit/Programme Team<span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="section" name="section"
-                  value="{{ old('section', $form) }}" required>
+                <input type="text" class="form-control @error('section') is-invalid @enderror" id="section"
+                  name="section" value="{{ old('section', $form) }}" required>
               </div>
             </div>
 
@@ -118,8 +119,10 @@
               @foreach (['squirrels', 'beavers', 'cubs', 'scouts', 'explorers', 'adults'] as $section)
                 <div class="form-group col-6 col-md-2">
                   <label for="number-{{ $section }}">{{ ucfirst($section) }}</label>
-                  <input type="number" min="0" class="form-control" id="number-{{ $section }}"
-                    name="number-{{ $section }}" value="{{ old('number-' . $section, $form) }}">
+                  <input type="number" min="0"
+                    class="form-control @error('number-' . $section) is-invalid @enderror"
+                    id="number-{{ $section }}" name="number-{{ $section }}"
+                    value="{{ old('number-' . $section, $form) }}">
                 </div>
               @endforeach
             </div>
@@ -141,18 +144,20 @@
 
             <div class="form-group">
               <label for="date">Date<span class="text-danger">*</span></label>
-              <input type="date" class="form-control" id="date" name="date"
-                value="{{ old('date', $form) }}" required>
+              <input type="date" class="form-control @error('date') is-invalid @enderror" id="date"
+                name="date" value="{{ old('date', $form) }}" required>
             </div>
 
             <div class="form-group">
               <label for="location">Location<span class="text-danger">*</span></label>
-              <textarea class="form-control" id="location" name="location" rows="4" required>{{ old('location', $form) }}</textarea>
+              <textarea class="form-control @error('location') is-invalid @enderror" id="location" name="location" rows="4"
+                required>{{ old('location', $form) }}</textarea>
             </div>
 
             <div class="form-group mb-0">
               <label for="description">Activity Description<span class="text-danger">*</span></label>
-              <textarea class="form-control" id="description" name="description" rows="4" required>{{ old('description', $form) }}</textarea>
+              <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"
+                rows="4" required>{{ old('description', $form) }}</textarea>
               <small class="form-text text-muted">
                 Provide details of the activity that is going to be taking place.
               </small>
@@ -175,12 +180,14 @@
 
             <div class="form-group">
               <label for="activity-leader">Details</label>
-              <textarea class="form-control" id="activity-leader" name="activity-leader" rows="4">{{ old('activity-leader', $form) }}</textarea>
+              <textarea class="form-control @error('activity-leader') is-invalid @enderror" id="activity-leader"
+                name="activity-leader" rows="4">{{ old('activity-leader', $form) }}</textarea>
             </div>
 
             <div class="form-group mb-0">
               <label for="activity-leader-email">Contact Email</label>
-              <input type="email" class="form-control" id="activity-leader-email" name="activity-leader-email"
+              <input type="email" class="form-control @error('activity-leader-email') is-invalid @enderror"
+                id="activity-leader-email" name="activity-leader-email"
                 value="{{ old('activity-leader-email', $form) }}">
               <small class="form-text text-muted">
                 A copy of this form will be sent to the permit holder/activity leader.
@@ -235,7 +242,8 @@
 
             <div class="form-group mb-0">
               <label for="intouch">Activity inTouch Arrangements<span class="text-danger">*</span></label>
-              <textarea class="form-control" id="intouch" name="intouch" rows="6" required>{{ old('intouch', $form) }}</textarea>
+              <textarea class="form-control @error('intouch') is-invalid @enderror" id="intouch" name="intouch" rows="6"
+                required>{{ old('intouch', $form) }}</textarea>
               <small class="form-text text-muted">
                 Please provide details of your inTouch system and the main contacts in the event of an emergency.
               </small>
@@ -259,8 +267,9 @@
 
             <div class="form-group mb-0">
               <label for="team-leader-email">GLV/Team Leader Email<span class="text-danger">*</span></label>
-              <input type="email" class="form-control" id="team-leader-email" name="team-leader-email"
-                value="{{ old('team-leader-email', $form) }}" required>
+              <input type="email" class="form-control @error('team-leader-email') is-invalid @enderror"
+                id="team-leader-email" name="team-leader-email" value="{{ old('team-leader-email', $form) }}"
+                required>
               <small class="form-text text-muted">
                 A copy of this form will be sent to your GLV/Team Leader.
               </small>
