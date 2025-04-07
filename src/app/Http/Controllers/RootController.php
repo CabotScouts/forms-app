@@ -6,6 +6,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
+use App\Models\Notification;
+
 class RootController
 {
   public function index()
@@ -16,27 +18,27 @@ class RootController
   public function submit(Request $request)
   {
     $rules = [
-      'lic-name' => ['required', 'max:255'],
-      'lic-email' => ['required', 'email', 'max:255'],
-      'lic-phone' => ['required', 'max:255'],
-      'submitter-name' => ['nullable', 'max:255'],
-      'submitter-email' => ['nullable', 'email'],
+      'lic_name' => ['required', 'max:255'],
+      'lic_email' => ['required', 'email', 'max:255'],
+      'lic_phone' => ['required', 'max:255'],
+      'submitter_name' => ['nullable', 'max:255'],
+      'submitter_email' => ['nullable', 'email'],
       'group' => ['required', 'max:255'],
       'section' => ['required', 'max:255'],
-      'number-squirrels' => ['nullable', 'gte:0'],
-      'number-beavers' => ['nullable', 'gte:0'],
-      'number-cubs' => ['nullable', 'gte:0'],
-      'number-scouts' => ['nullable', 'gte:0'],
-      'number-explorers' => ['nullable', 'gte:0'],
-      'number-adults' => ['nullable', 'gte:0'],
+      'number_squirrels' => ['nullable', 'gte:0'],
+      'number_beavers' => ['nullable', 'gte:0'],
+      'number_cubs' => ['nullable', 'gte:0'],
+      'number_scouts' => ['nullable', 'gte:0'],
+      'number_explorers' => ['nullable', 'gte:0'],
+      'number_adults' => ['nullable', 'gte:0'],
       'date' => ['required', 'date'],
       'location' => ['required'],
       'description' => ['required'],
-      'activity-leader' => ['nullable', 'max:255'],
-      'activity-leader-email' => ['nullable', 'email', 'max:255'],
-      'risk-assessments' => ['required'],
+      'activity_leader' => ['nullable', 'max:255'],
+      'activity_leader_email' => ['nullable', 'email', 'max:255'],
+      'risk_assessments' => ['required'],
       'intouch' => ['required'],
-      'team-leader-email' => ['required', 'email'],
+      'team_leader_email' => ['required', 'email'],
       'h-captcha-response' => ['hcaptcha'],
     ];
 
@@ -45,30 +47,31 @@ class RootController
     ];
 
     $names = [
-      'lic-name' => 'Leader in Charge\'s name',
-      'lic-email' => 'Leader in Charge\'s email address',
-      'lic-phone' => 'Leader in Charge\'s phone number',
-      'submitter-name' => 'notification submitter\'s name',
-      'submitter-email' => 'notification submitter\'s email address',
+      'lic_name' => 'Leader in Charge\'s name',
+      'lic_email' => 'Leader in Charge\'s email address',
+      'lic_phone' => 'Leader in Charge\'s phone number',
+      'submitter_name' => 'notification submitter\'s name',
+      'submitter_email' => 'notification submitter\'s email address',
       'group' => 'Group',
       'section' => 'Section',
-      'number-squirrels' => 'number of Squirrels',
-      'number-beavers' => 'number of Beavers',
-      'number-cubs' => 'number of Cubs',
-      'number-scouts' => 'number of Scouts',
-      'number-explorers' => 'number of Explorers',
-      'number-adults' => 'number of Adults',
+      'number_squirrels' => 'number of Squirrels',
+      'number_beavers' => 'number of Beavers',
+      'number_cubs' => 'number of Cubs',
+      'number_scouts' => 'number of Scouts',
+      'number_explorers' => 'number of Explorers',
+      'number_adults' => 'number of Adults',
       'date' => 'activity date',
       'location' => 'activity location',
       'description' => 'activity details',
-      'activity-leader' => 'permit holder/activity leader details',
-      'activity-leader-email' => 'permit holder/activity leader email address',
-      'risk-assessments' => 'risk assessments',
+      'activity_leader' => 'permit holder/activity leader details',
+      'activity_leader_email' => 'permit holder/activity leader email address',
+      'risk_assessments' => 'risk assessments',
       'intouch' => 'inTouch arrangements',
-      'team-leader-email' => 'GLV/Team Leader email address',
+      'team_leader_email' => 'GLV/Team Leader email address',
     ];
 
-    $validator = Validator::make($request->all(), $rules, $messages, $names)->validate();
+    $validated = Validator::make($request->all(), $rules, $messages, $names)->validate();
+    $notification = Notification::create($validated);
 
     return $request->all();
   }
