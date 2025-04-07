@@ -56,7 +56,7 @@ class RootController
       'number-beavers' => 'number of Beavers',
       'number-cubs' => 'number of Cubs',
       'number-scouts' => 'number of Scouts',
-      'number-explorers' => 'number of Exporers',
+      'number-explorers' => 'number of Explorers',
       'number-adults' => 'number of Adults',
       'date' => 'activity date',
       'location' => 'activity location',
