@@ -2,7 +2,7 @@
   "name": "cabotscouts/notifyapp",
   "version": "0.1.0-dev",
   "type": "project",
-  "description": "A simple app to handle NANs and AANs.",
+  "description": "A simple app to handle Activity Notifications.",
   "keywords": [
     "laravel",
     "framework"
@@ -12,7 +12,8 @@
     "php": "^8.3",
     "google/apiclient": "^2.10",
     "laravel/framework": "^11.0",
-    "laravel/tinker": "^2.9"
+    "laravel/tinker": "^2.9",
+    "teampanfu/laravel-hcaptcha": "^1.1"
   },
   "require-dev": {
     "fakerphp/faker": "^1.23",
