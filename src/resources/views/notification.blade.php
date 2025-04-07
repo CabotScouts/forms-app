@@ -41,22 +41,22 @@
             <h4 class="card-title">Leader in Charge</h4>
 
             <div class="form-group">
-              <label for="lic-name">Name<span class="text-danger">*</span></label>
-              <input type="text" class="form-control @error('lic-name') is-invalid @enderror" id="lic-name"
-                name="lic-name" value="{{ old('lic-name', $form) }}" required>
+              <label for="lic_name">Name<span class="text-danger">*</span></label>
+              <input type="text" class="form-control @error('lic_name') is-invalid @enderror" id="lic_name"
+                name="lic_name" value="{{ old('lic_name', $form) }}" required>
             </div>
 
             <div class="form-group">
-              <label for="lic-email">Email Address<span class="text-danger">*</span></label>
-              <input type="email" class="form-control @error('lic-email') is-invalid @enderror" id="lic-email"
-                name="lic-email" value="{{ old('lic-email', $form) }}" required>
+              <label for="lic_email">Email Address<span class="text-danger">*</span></label>
+              <input type="email" class="form-control @error('lic_email') is-invalid @enderror" id="lic_email"
+                name="lic_email" value="{{ old('lic_email', $form) }}" required>
             </div>
 
             <div class="form-group mb-0">
-              <label for="lic-phone">Phone Number<span class="text-danger">*</span></label>
+              <label for="lic_phone">Phone Number<span class="text-danger">*</span></label>
               <input type="tel" inputmode="numeric" pattern="[0-9]*"
-                class="form-control @error('lic-phone') is-invalid @enderror" id="lic-phone" name="lic-phone"
-                value="{{ old('lic-phone', $form) }}" required>
+                class="form-control @error('lic_phone') is-invalid @enderror" id="lic_phone" name="lic_phone"
+                value="{{ old('lic_phone', $form) }}" required>
             </div>
 
           </div>
@@ -73,15 +73,15 @@
             </p>
 
             <div class="form-group">
-              <label for="submitter-name">Name</label>
-              <input type="text" class="form-control @error('submitter-name') is-invalid @enderror" id="submitter-name"
-                name="submitter-name" value="{{ old('submitter-name', $form) }}">
+              <label for="submitter_name">Name</label>
+              <input type="text" class="form-control @error('submitter_name') is-invalid @enderror" id="submitter_name"
+                name="submitter_name" value="{{ old('submitter_name', $form) }}">
             </div>
 
             <div class="form-group mb-0">
-              <label for="submitter-email">Email Address</label>
-              <input type="email" class="form-control @error('submitter-email') is-invalid @enderror"
-                id="submitter-email" name="submitter-email" value="{{ old('submitter-email', $form) }}">
+              <label for="submitter_email">Email Address</label>
+              <input type="email" class="form-control @error('submitter_email') is-invalid @enderror"
+                id="submitter_email" name="submitter_email" value="{{ old('submitter_email', $form) }}">
               <small class="form-text text-muted">A copy of this form will be sent to you for your records.</small>
             </div>
 
@@ -118,11 +118,11 @@
             <div class="form-row">
               @foreach (['squirrels', 'beavers', 'cubs', 'scouts', 'explorers', 'adults'] as $section)
                 <div class="form-group col-6 col-md-2">
-                  <label for="number-{{ $section }}">{{ ucfirst($section) }}</label>
+                  <label for="number_{{ $section }}">{{ ucfirst($section) }}</label>
                   <input type="number" min="0"
-                    class="form-control @error('number-' . $section) is-invalid @enderror"
-                    id="number-{{ $section }}" name="number-{{ $section }}"
-                    value="{{ old('number-' . $section, $form) }}">
+                    class="form-control @error('number_' . $section) is-invalid @enderror"
+                    id="number_{{ $section }}" name="number_{{ $section }}"
+                    value="{{ old('number_' . $section, $form) }}">
                 </div>
               @endforeach
             </div>
@@ -179,16 +179,16 @@
             </p>
 
             <div class="form-group">
-              <label for="activity-leader">Details</label>
-              <textarea class="form-control @error('activity-leader') is-invalid @enderror" id="activity-leader"
-                name="activity-leader" rows="4">{{ old('activity-leader', $form) }}</textarea>
+              <label for="activity_leader">Details</label>
+              <textarea class="form-control @error('activity_leader') is-invalid @enderror" id="activity_leader"
+                name="activity_leader" rows="4">{{ old('activity_leader', $form) }}</textarea>
             </div>
 
             <div class="form-group mb-0">
-              <label for="activity-leader-email">Contact Email</label>
-              <input type="email" class="form-control @error('activity-leader-email') is-invalid @enderror"
-                id="activity-leader-email" name="activity-leader-email"
-                value="{{ old('activity-leader-email', $form) }}">
+              <label for="activity_leader_email">Contact Email</label>
+              <input type="email" class="form-control @error('activity_leader_email') is-invalid @enderror"
+                id="activity_leader_email" name="activity_leader_email"
+                value="{{ old('activity_leader_email', $form) }}">
               <small class="form-text text-muted">
                 A copy of this form will be sent to the permit holder/activity leader.
               </small>
@@ -208,11 +208,11 @@
               you are responsible for.</p>
 
             <div class="form-group mb-0">
-              <label for="risk-assessments">Upload Risk Assessments<span class="text-danger">*</span></label>
+              <label for="risk_assessments">Upload Risk Assessments<span class="text-danger">*</span></label>
 
               @include('components.filepond', [
-                  'id' => 'risk-assessments',
-                  'name' => 'risk-assessments[]',
+                  'id' => 'risk_assessments',
+                  'name' => 'risk_assessments[]',
                   'required' => true,
               ])
 
@@ -265,9 +265,9 @@
             </p>
 
             <div class="form-group mb-0">
-              <label for="team-leader-email">GLV/Team Leader Email<span class="text-danger">*</span></label>
-              <input type="email" class="form-control @error('team-leader-email') is-invalid @enderror"
-                id="team-leader-email" name="team-leader-email" value="{{ old('team-leader-email', $form) }}"
+              <label for="team_leader_email">GLV/Team Leader Email<span class="text-danger">*</span></label>
+              <input type="email" class="form-control @error('team_leader_email') is-invalid @enderror"
+                id="team_leader_email" name="team_leader_email" value="{{ old('team_leader_email', $form) }}"
                 required>
               <small class="form-text text-muted">
                 A copy of this form will be sent to your GLV/Team Leader.
