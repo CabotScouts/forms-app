@@ -276,11 +276,7 @@
 <link href="{{ asset('static/filepond.min.css') }}" rel="stylesheet">
 {{-- if form has been rejected with validation errors we need to reset modified flag --}}
 <script>
-  var modified = {
-    {
-      old('submit') !== null ? 'true' : 'false'
-    }
-  };
+  var modified = {{ old('submit') !== null ? 'true' : 'false' }};
 </script>
 @endpush
 @push('body-additional')
