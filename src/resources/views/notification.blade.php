@@ -155,7 +155,7 @@
             </div>
 
             <div class="form-group mb-0">
-              <label for="description">Activity Description<span class="text-danger">*</span></label>
+              <label for="description">Activity Details<span class="text-danger">*</span></label>
               <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"
                 rows="4" required>{{ old('description', $form) }}</textarea>
               <small class="form-text text-muted">
@@ -204,7 +204,7 @@
           <div class="card-body">
             <h4 class="card-title">Risk Assessments</h4>
 
-            <p class="card-text">You must provide a written risk assessment to cover the aspects of this activity which
+            <p class="card-text">You must provide risk assessments to cover the aspects of this activity which
               you are responsible for.</p>
 
             <div class="form-group mb-0">
@@ -218,8 +218,7 @@
 
               <small class="form-text text-muted">
                 Multiple files can be submitted if necessary (maximum 5 files, 3MB per file, accepted filetypes are pdf,
-                doc, docx, xls, xlsx).
-                Uploaded files will be stored for three months after the activity date.
+                doc, docx, xls, xlsx). Uploaded files will be stored for three months after the activity date.
               </small>
             </div>
 
@@ -237,7 +236,7 @@
               An inTouch system must be put in place for all Scouting activities.
               <a href="https://www.scouts.org.uk/volunteers/running-your-section/programme-guidance/information-for-volunteers/intouch/"
                 target="_blank" rel="nofollow noreferer">
-                Read more about inTouch procedures.</a>
+                Read more about inTouch arrangements.</a>
             </p>
 
             <div class="form-group mb-0">
