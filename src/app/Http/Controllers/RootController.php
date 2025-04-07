@@ -15,7 +15,7 @@ class RootController
     return view('notification', ["form" => false]);
   }
 
-  public function submit(Request $request)
+  public function submit(Request $request): RedirectResponse
   {
     $rules = [
       'lic_name' => ['required', 'max:255'],
@@ -73,6 +73,10 @@ class RootController
     $validated = Validator::make($request->all(), $rules, $messages, $names)->validate();
     $notification = Notification::create($validated);
 
-    return $request->all();
+    session()->flash('alert', [
+      'success' => 'Your activity notification has been submitted.'
+    ]);
+
+    return redirect()->route("root.index");
   }
 }

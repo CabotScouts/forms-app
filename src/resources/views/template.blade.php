@@ -56,8 +56,13 @@
     </div>
   </nav>
   <div class="container-lg my-4">
+    @include('components.alerts')
+
     <div class="alert alert-danger">
-      This form is not yet active, please continue to use the <a href="https://bristolcabotscouts.org.uk/leader-resources/notification-guidance/activity-notification-form/" class="alert-link" target="_blank" ref="nofollow noreferrer">existing activity notification form</a> until it is replaced.
+      This form is not yet active, please continue to use the <a
+        href="https://bristolcabotscouts.org.uk/leader-resources/notification-guidance/activity-notification-form/"
+        class="alert-link" target="_blank" ref="nofollow noreferrer">existing activity notification form</a> until it is
+      replaced.
     </div>
 
     @yield('content')
