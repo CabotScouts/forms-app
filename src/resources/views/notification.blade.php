@@ -227,14 +227,14 @@
             <h4 class="card-title">InTouch Information</h4>
 
             <p class="card-text">
-              An InTouch system must be put in place for all Scouting activities.
+              An inTouch system must be put in place for all Scouting activities.
               <a href="https://www.scouts.org.uk/volunteers/running-your-section/programme-guidance/information-for-volunteers/intouch/"
                 target="_blank" rel="nofollow noreferer">
-                Read more about InTouch procedures.</a>
+                Read more about inTouch procedures.</a>
             </p>
 
             <div class="form-group mb-0">
-              <label for="intouch">Activity InTouch Arrangements<span class="text-danger">*</span></label>
+              <label for="intouch">Activity inTouch Arrangements<span class="text-danger">*</span></label>
               <textarea class="form-control" id="intouch" name="intouch" rows="6" required>{{ old('intouch', $form) }}</textarea>
               <small class="form-text text-muted">
                 Please provide details of your inTouch system and the main contacts in the event of an emergency.
