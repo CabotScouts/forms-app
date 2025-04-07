@@ -54,8 +54,8 @@
 
             <div class="form-group mb-0">
               <label for="lic-phone">Phone Number<span class="text-danger">*</span></label>
-              <input type="input" class="form-control" id="lic-phone" name="lic-phone"
-                value="{{ old('lic-phone', $form) }}" required>
+              <input type="tel" inputmode="numeric" pattern="[0-9]*" class="form-control" id="lic-phone"
+                name="lic-phone" value="{{ old('lic-phone', $form) }}" required>
             </div>
 
           </div>
