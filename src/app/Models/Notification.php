@@ -2,13 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\{Builder, Model, Prunable, SoftDeletes};
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Notification extends Model
 {
-    use SoftDeletes;
+    use Prunable, SoftDeletes;
 
     protected $with = ['uploads'];
     protected $fillable = [
@@ -22,5 +21,19 @@ class Notification extends Model
     public function uploads(): HasMany
     {
         return $this->hasMany(Upload::class);
+    }
+
+    public function prunable(): Builder
+    {
+        return static::where('date', '<=', now()->subMonths(3));
+    }
+
+    public function pruning(): void
+    {
+        foreach($this->uploads()->get() as $upload)
+        {
+            $upload->deleteFile();
+            $upload->delete();
+        }
     }
 }

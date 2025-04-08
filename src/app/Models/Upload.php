@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Upload extends Model
 {
@@ -15,8 +15,20 @@ class Upload extends Model
         return $upload;
     }
 
-    public function url()
+    public function url(): string
     {
         return asset("storage/" . $this->path);
+    }
+
+    public function basePath(): string
+    {
+        return sprintf("public/%s", $this->path);
+    }
+
+    public function deleteFile()
+    {
+        if(Storage::exists($this->basePath())) {
+            Storage::delete($this->basePath());
+        }
     }
 }

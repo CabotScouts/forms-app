@@ -13,8 +13,7 @@
 
 ### Uploads
 * garbage collection job on temp file uploads
-* job to prune notifications older than three months (*TODO: confirm how long we need to keep*)
-* job to delete uploads older than three months (*TODO: confirm this time also*)
+* ~~job to prune notifications older than three months (and delete uploaded files)~~ **TODO: confirm how long we need to keep notifications for after the event**
 
 ### Administration
 * login with District workspace accounts
