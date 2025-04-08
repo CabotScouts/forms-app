@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('uploads', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->foreignId('notification_id')->constrained();
+            $table->string('path');
             $table->timestamps();
         });
     }

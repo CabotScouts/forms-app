@@ -6,7 +6,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{Storage, Validator};
 
-use App\Models\Notification;
+use App\Models\{Notification, Upload};
 
 class RootController
 {
@@ -75,16 +75,20 @@ class RootController
 
     $filepond = app(\Sopamo\LaravelFilepond\Filepond::class);
     $disk = config('filepond.temporary_files_disk');
-    $uploads = json_decode($validated["risk_assessments"]);
+    $submitted = json_decode($validated["risk_assessments"]);
     
-    foreach($uploads as $sid) {
+    $uploads = [];
+    foreach($submitted as $sid) {
       $temppath = $filepond->getPathFromServerId($sid);
       if(Storage::disk($disk)->exists($temppath)) {
         $file = basename($temppath);
-        $path = sprintf("public/uploads/%s/%s", $notification->id, $file);
-        Storage::disk($disk)->move($temppath, $path);
+        $path = sprintf("uploads/%s/%s", $notification->id, $file);
+        $fullpath = sprintf("public/%s", $path);
+        Storage::disk($disk)->move($temppath, $fullpath);
+        $uploads[] = Upload::from($path);
       }
     }
+    $notification->uploads()->saveMany($uploads);
 
     session()->flash('alert', [
       'success' => 'Your activity notification has been submitted.'
