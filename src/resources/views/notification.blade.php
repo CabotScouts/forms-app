@@ -208,11 +208,11 @@
               you are responsible for.</p>
 
             <div class="form-group mb-0">
-              <label for="risk_assessments">Upload Risk Assessments<span class="text-danger">*</span></label>
+              <label for="filepond">Upload Risk Assessments<span class="text-danger">*</span></label>
 
               @include('components.filepond', [
-                  'id' => 'risk_assessments',
-                  'name' => 'risk_assessments[]',
+                  'id' => 'filepond',
+                  'name' => 'file',
                   'required' => true,
               ])
 
@@ -286,6 +286,7 @@
 
             @csrf
 
+            <input name="risk_assessments" id="risk_assessments" type="hidden" value="">
             <button type="submit" class="btn btn-lg btn-primary" id="submit" name="submit" value="true">
               Submit notification
             </button>
@@ -321,6 +322,9 @@
     if (button) {
       button.addEventListener('click', function(event) {
         modified = false; // remove flag when we actually want to navigate away to submit the form
+        var uploads = [];
+        document.getElementsByName("file").forEach((element) => uploads.push(element.value));
+        document.getElementById("risk_assessments").value = JSON.stringify(uploads);
       });
     }
 
@@ -336,6 +340,26 @@
       FilePondPluginFileValidateSize,
       FilePondPluginFileValidateType
     );
+
+    FilePond.setOptions({
+      server: {
+        url: '/filepond/api',
+        process: {
+          url: "/process",
+          headers: (file) => {
+            return {
+              "Upload-Name": file.name,
+              "X-CSRF-TOKEN": "{{ csrf_token() }}",
+            }
+          },
+        },
+        revert: '/process',
+        patch: "?patch=",
+        headers: {
+          'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        }
+      }
+    });
 
     FilePond.parse(document.body);
   </script>

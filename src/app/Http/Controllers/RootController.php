@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\{Storage, Validator};
 
 use App\Models\Notification;
 
@@ -15,7 +15,7 @@ class RootController
     return view('notification', ["form" => false]);
   }
 
-  public function submit(Request $request): RedirectResponse
+  public function submit(Request $request)
   {
     $rules = [
       'lic_name' => ['required', 'max:255'],
@@ -73,9 +73,23 @@ class RootController
     $validated = Validator::make($request->all(), $rules, $messages, $names)->validate();
     $notification = Notification::create($validated);
 
+    $filepond = app(\Sopamo\LaravelFilepond\Filepond::class);
+    $disk = config('filepond.temporary_files_disk');
+    $uploads = json_decode($validated["risk_assessments"]);
+    
+    foreach($uploads as $sid) {
+      $temppath = $filepond->getPathFromServerId($sid);
+      if(Storage::disk($disk)->exists($temppath)) {
+        $file = basename($temppath);
+        $path = sprintf("public/uploads/%s/%s", $notification->id, $file);
+        Storage::disk($disk)->move($temppath, $path);
+      }
+    }
+
     session()->flash('alert', [
       'success' => 'Your activity notification has been submitted.'
     ]);
+
 
     return redirect()->route("root.index");
   }

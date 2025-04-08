@@ -1,7 +1,7 @@
 # notify
 
 ## MVP tasks
-* file uploads working from filepond component
+* ~~file uploads working from filepond component~~
 * uploaded files related to notification being submitted and route to view
 * get form data sent out as email to DLV, Programme Team Lead(?), LIC, submitter, permit holder, GLV/TL (so many emails...) -> this will need sendgrid? SMTP relay might see this as spam...
 
@@ -11,6 +11,7 @@
 * select Group from dropdown -> get GLV/TL email from this
 
 ### Uploads
+* garbage collection job on temp file uploads
 * job to prune notifications older than three months (*TODO: confirm how long we need to keep*)
 * job to delete uploads older than three months (*TODO: confirm this time also*)
 
