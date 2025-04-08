@@ -47,7 +47,4 @@ Submitted on {{ $notification->created_at }} by {{ $notification->lic_name }} ({
 @foreach($notification->uploads()->get() as $upload)
 * <x-mail::link :url="$upload->url()">{{ $upload->name }}</x-mail::link>
 @endforeach
-
-Thanks,<br>
-{{ config('app.name') }}
 </x-mail::message>
