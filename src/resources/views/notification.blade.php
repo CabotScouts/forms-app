@@ -69,7 +69,7 @@
           <div class="card-body">
             <h4 class="card-title">Your Details</h4>
             <p class="card-text">
-              If you are not the Leader in Charge, please provide your details.
+              If you are not the Leader in Charge, please provide your name and email address.
             </p>
 
             <div class="form-group">
@@ -114,7 +114,7 @@
               </div>
             </div>
 
-            <h5>Approximate numbers attending</h5>
+            <h5>Numbers attending</h5>
             <div class="form-row">
               @foreach (['squirrels', 'beavers', 'cubs', 'scouts', 'explorers', 'adults'] as $section)
                 <div class="form-group col-6 col-md-2">
@@ -159,7 +159,7 @@
               <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"
                 rows="4" required>{{ old('description', $form) }}</textarea>
               <small class="form-text text-muted">
-                Provide details of the activity that is going to be taking place.
+                Provide a description of the activity that is going to be taking place.
               </small>
             </div>
 
