@@ -15,4 +15,5 @@ use App\Http\Controllers\RootController;
 Route::controller(RootController::class)->group(function () {
   Route::get('/', 'index')->name('root.index');
   Route::post('/submit', 'submit')->name('root.submit');
+  Route::get('/demo/{id}', 'demo');
 });

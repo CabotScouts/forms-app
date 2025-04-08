@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\{Storage, Validator};
+use Illuminate\Support\Facades\{Mail, Storage, Validator};
 
+use App\Mail\NotificationSubmitted;
 use App\Models\{Notification, Upload};
 
 class RootController
@@ -95,5 +96,11 @@ class RootController
 
 
     return redirect()->route("root.index");
+  }
+
+  public function demo($id)
+  {
+    $n = Notification::findOrFail($id);
+    return new NotificationSubmitted($n);
   }
 }
