@@ -74,17 +74,16 @@ class RootController
     $notification = Notification::create($validated);
 
     $filepond = app(\Sopamo\LaravelFilepond\Filepond::class);
-    $disk = config('filepond.temporary_files_disk');
     $submitted = json_decode($validated["risk_assessments"]);
     
     $uploads = [];
     foreach($submitted as $sid) {
       $temppath = $filepond->getPathFromServerId($sid);
-      if(Storage::disk($disk)->exists($temppath)) {
+      if(Storage::exists($temppath)) {
         $file = basename($temppath);
-        $path = sprintf("uploads/%s/%s", $notification->id, $file);
+        $path = sprintf("uploads/%s_%s", $notification->id, $file);
         $fullpath = sprintf("public/%s", $path);
-        Storage::disk($disk)->move($temppath, $fullpath);
+        Storage::move($temppath, $fullpath);
         $uploads[] = Upload::from($path);
       }
     }
