@@ -14,8 +14,7 @@ class Notification extends Model
         'lic_name', 'lic_email', 'lic_phone', 'submitter_name', 'submitter_email',
         'group', 'section', 'number_squirrels', 'number_beavers', 'number_cubs',
         'number_scouts', 'number_explorers', 'number_adults', 'date', 'location',
-        'description', 'activity_leader', 'activity_leader_email', 'intouch',
-        'team_leader_email'
+        'description', 'activity_leader', 'intouch', 'team_leader_email'
     ];
 
     public function uploads(): HasMany

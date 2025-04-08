@@ -171,26 +171,35 @@
       <div class="col mb-2">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Permit Holder/Activity Leader</h4>
+            <h4 class="card-title">Permit Holder/External Activity Details</h4>
 
             <p class="card-text">
               Where the activity requires a permit holder or is being lead by an external activity provider, please
-              provide details.
+              provide details to explain how you are meeting the Scouting requirements for this activity.
             </p>
 
-            <div class="form-group">
-              <label for="activity_leader">Details</label>
-              <textarea class="form-control @error('activity_leader') is-invalid @enderror" id="activity_leader"
-                name="activity_leader" rows="4">{{ old('activity_leader', $form) }}</textarea>
-            </div>
+            <p class="card-text">
+            <ul>
+              <li><a
+                  href="https://www.scouts.org.uk/volunteers/running-your-section/programme-guidance/information-for-volunteers/general-activity-guidance/"
+                  target="_blank" rel="noreferrer">
+                  General activities guidance
+                </a></li>
+              <li><a
+                  href="https://www.scouts.org.uk/volunteers/running-your-section/programme-guidance/information-for-volunteers/general-activity-guidance/externally-led-activities/"
+                  target="_blank" rel="noreferrer">
+                  Externally led activities guidance
+                </a></li>
+            </ul>
+            </p>
 
             <div class="form-group mb-0">
-              <label for="activity_leader_email">Contact Email</label>
-              <input type="email" class="form-control @error('activity_leader_email') is-invalid @enderror"
-                id="activity_leader_email" name="activity_leader_email"
-                value="{{ old('activity_leader_email', $form) }}">
+              <label for="activity_leader">Permit Holder/External Activity Details</label>
+              <textarea class="form-control @error('activity_leader') is-invalid @enderror" id="activity_leader"
+                name="activity_leader" rows="4">{{ old('activity_leader', $form) }}</textarea>
               <small class="form-text text-muted">
-                A copy of this form will be sent to the permit holder/activity leader.
+                For permit holders provide names, contact details, and information about their permits, and for externally
+                led activities please provide the provider's address, contact details, and AALA number if required.
               </small>
             </div>
 
@@ -204,8 +213,19 @@
           <div class="card-body">
             <h4 class="card-title">Risk Assessments</h4>
 
-            <p class="card-text">You must provide risk assessments to cover the aspects of this activity which
-              you are responsible for.</p>
+            <p class="card-text">
+              You must provide risk assessments to cover the aspects of this activity which
+              you are responsible for.
+            </p>
+
+            <p class="card-text">
+            <ul>
+              <li><a href="https://www.scouts.org.uk/volunteers/staying-safe-and-safeguarding/risk-assessments/"
+                  target="_blank" rel="noreferrer">
+                  Discover more about risk assessments
+                </a></li>
+            </ul>
+            </p>
 
             <div class="form-group mb-0">
               <label for="filepond">Upload Risk Assessments<span class="text-danger">*</span></label>
@@ -218,7 +238,7 @@
 
               <small class="form-text text-muted">
                 Multiple files can be submitted if necessary (maximum 5 files, 3MB per file, accepted filetypes are pdf,
-                doc, docx, xls, xlsx). Uploaded files will be stored for three months after the activity date.
+                doc, docx, xls, xlsx).
               </small>
             </div>
 
@@ -233,18 +253,26 @@
             <h4 class="card-title">InTouch Information</h4>
 
             <p class="card-text">
-              An inTouch system must be put in place for all Scouting activities.
-              <a href="https://www.scouts.org.uk/volunteers/running-your-section/programme-guidance/information-for-volunteers/intouch/"
-                target="_blank" rel="nofollow noreferer">
-                Read more about inTouch arrangements.</a>
+              Whenever any activity, event or meeting is run within Scouts, it's a requirement that an InTouch system is
+              put in place.
+            </p>
+
+            <p class="card-text">
+            <ul>
+              <li><a
+                  href="https://www.scouts.org.uk/volunteers/running-your-section/programme-guidance/information-for-volunteers/intouch/"
+                  target="_blank" rel="noreferrer">
+                  Setting up an InTouch system
+                </a></li>
+            </ul>
             </p>
 
             <div class="form-group mb-0">
-              <label for="intouch">Activity inTouch Arrangements<span class="text-danger">*</span></label>
+              <label for="intouch">Activity InTouch Arrangements<span class="text-danger">*</span></label>
               <textarea class="form-control @error('intouch') is-invalid @enderror" id="intouch" name="intouch" rows="6"
                 required>{{ old('intouch', $form) }}</textarea>
               <small class="form-text text-muted">
-                Please provide details of your inTouch system and the main contacts in the event of an emergency.
+                Please provide details of your InTouch system and the main contacts in the event of an emergency.
               </small>
             </div>
 

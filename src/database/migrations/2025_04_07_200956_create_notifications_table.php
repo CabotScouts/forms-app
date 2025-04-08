@@ -30,7 +30,6 @@ return new class extends Migration
             $table->text("location");
             $table->text("description");
             $table->text("activity_leader")->nullable();
-            $table->string("activity_leader_email")->nullable();
             $table->text("intouch");
             $table->string("team_leader_email");
             $table->timestamps();
