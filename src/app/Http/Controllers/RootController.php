@@ -85,7 +85,11 @@ class RootController
         $path = sprintf("uploads/%s_%s", $notification->id, $file);
         $fullpath = sprintf("public/%s", $path);
         Storage::move($temppath, $fullpath);
-        $uploads[] = Upload::from($path);
+
+        $u = new Upload;
+        $u->name = $file;
+        $u->path = $path;
+        $uploads[] = $u;
       }
     }
     $notification->uploads()->saveMany($uploads);

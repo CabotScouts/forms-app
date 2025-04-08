@@ -7,14 +7,6 @@ use Illuminate\Support\Facades\Storage;
 
 class Upload extends Model
 {
-    public static function from($path): Upload
-    {
-        $upload = new Upload;
-        $upload->path = $path;
-        $upload->name = basename($path);
-        return $upload;
-    }
-
     public function url(): string
     {
         return asset("storage/" . $this->path);
