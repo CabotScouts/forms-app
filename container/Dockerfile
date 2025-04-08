@@ -60,7 +60,7 @@ RUN chmod +x /init
 RUN mkdir /.composer
 RUN chmod -R ugo+rw /.composer
 
-RUN chown -R runner.runner /data /run /var/lib/nginx /var/log/nginx
+RUN chown -R runner:runner /data /run /var/lib/nginx /var/log/nginx
 
 USER runner
 EXPOSE 80
