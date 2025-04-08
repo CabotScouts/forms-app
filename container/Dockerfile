@@ -62,6 +62,11 @@ RUN chmod -R ugo+rw /.composer
 
 RUN chown -R runner:runner /data /run /var/lib/nginx /var/log/nginx
 
+RUN touch crontab.tmp \
+  && echo '* * * * * cd /data && php artisan schedule:run >> /dev/null 2>&1' > crontab.tmp \
+  && crontab crontab.tmp \
+  && rm -rf crontab.tmp
+
 USER runner
 EXPOSE 80
 ENTRYPOINT [ "/init" ]
