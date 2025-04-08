@@ -40,6 +40,7 @@ RUN apk add --no-cache \
   php83-xmlreader \
   php83-xmlwriter \
   php83-zip \
+  supercronic \
   supervisor \
   sqlite
 
@@ -48,6 +49,7 @@ ARG GID=1000
 RUN addgroup -g ${GID} --system runner
 RUN adduser -G runner --system -D -s /bin/sh -u ${UID} runner
 
+COPY crontab /etc/crontabs/runner
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY conf.d /etc/nginx/conf.d/
 COPY fpm-pool.conf /etc/php83/php-fpm.d/www.conf
@@ -60,12 +62,7 @@ RUN chmod +x /init
 RUN mkdir /.composer
 RUN chmod -R ugo+rw /.composer
 
-RUN chown -R runner:runner /data /run /var/lib/nginx /var/log/nginx
-
-RUN touch crontab.tmp \
-  && echo '* * * * * cd /data && php artisan schedule:run >> /dev/null 2>&1' > crontab.tmp \
-  && crontab crontab.tmp \
-  && rm -rf crontab.tmp
+RUN chown -R runner:runner /data /run /var/lib/nginx /var/log/nginx /etc/crontabs/runner
 
 USER runner
 EXPOSE 80
