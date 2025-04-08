@@ -3,7 +3,7 @@
 ## MVP tasks
 * ~~file uploads working from filepond component~~
 * ~~uploaded files related to notification being submitted~~
-* fix upload size limits in PHP (and nginx?)
+* ~~fix upload size limits in PHP (and nginx?)~~
 * get form data sent out as email to DLV, Programme Team Lead(?), LIC, submitter, permit holder, GLV/TL (so many emails...) -> this will need sendgrid? SMTP relay might see this as spam...
 
 ## Improvements to add
