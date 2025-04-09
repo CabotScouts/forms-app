@@ -237,7 +237,7 @@
               ])
 
               <small class="form-text text-muted">
-                Multiple files can be submitted if necessary (maximum 5 files, 3MB per file, accepted filetypes are pdf,
+                Multiple files can be submitted if necessary (maximum 3 files, 3MB per file, accepted filetypes are pdf,
                 doc, docx, xls, xlsx).
               </small>
             </div>
