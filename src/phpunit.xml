@@ -29,5 +29,7 @@
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
+        <env name="HCAPTCHA_SITEKEY" value="10000000-ffff-ffff-ffff-000000000001" />
+        <env name="HCAPTCHA_SECRETKEY" value="0x0000000000000000000000000000000000000000" />
     </php>
 </phpunit>

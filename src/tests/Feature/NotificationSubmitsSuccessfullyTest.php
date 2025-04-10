@@ -28,6 +28,7 @@ class NotificationSubmitsSuccessfullyTest extends TestCase
         'description' => 'Climbing a mountain',
         'intouch' => 'Carrier pigeon',
         'team_leader_email' => 'glv@1sttestington.org.uk',
+        'h-captcha-response' => '10000000-aaaa-bbbb-cccc-000000000001',
     ];
 
     public function test_notification_is_submitted(): void
