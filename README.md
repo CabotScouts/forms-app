@@ -6,7 +6,7 @@
 * ~~fix upload size limits in PHP (and nginx?)~~
 * ~~get form data sent out as email to DLV, Programme Team Lead(?), LIC, submitter, GLV/TL~~
 * ~~setup hCaptcha properly~~
-* base tests to confirm a properly filled out form will get processed/email sent
+* ~~base tests to confirm a properly filled out form will get processed/email sent~~
 
 ## Improvements to add
 ### User Experience
