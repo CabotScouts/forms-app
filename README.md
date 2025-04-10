@@ -15,7 +15,7 @@
 * select Group from dropdown -> get GLV/TL email from this
 
 ### Uploads
-* garbage collection job on temp file uploads
+* ~~garbage collection job on temp file uploads~~
 * ~~job to prune notifications older than three months (and delete uploaded files)~~ **TODO: confirm how long we need to keep notifications for after the event**
 
 ### Administration
