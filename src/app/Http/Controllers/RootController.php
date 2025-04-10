@@ -39,7 +39,7 @@ class RootController
       'risk_assessments' => ['required'],
       'intouch' => ['required'],
       'team_leader_email' => ['required', 'email'],
-      'h-captcha-response' => ['hcaptcha'],
+      'h-captcha-response' => ['required', 'hcaptcha'],
     ];
 
     $messages = [
