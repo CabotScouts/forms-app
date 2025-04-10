@@ -44,8 +44,8 @@ RUN apk add --no-cache \
   supervisor \
   sqlite
 
-ARG UID=1000
-ARG GID=1000
+ARG UID
+ARG GID
 RUN addgroup -g ${GID} --system runner
 RUN adduser -G runner --system -D -s /bin/sh -u ${UID} runner
 
