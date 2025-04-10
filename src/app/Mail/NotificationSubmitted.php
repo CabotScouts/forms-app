@@ -3,8 +3,8 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -21,8 +21,11 @@ class NotificationSubmitted extends Mailable
 
     public function envelope(): Envelope
     {
+        $reply = $this->notification->submitter_email ? new Address($this->notificication->submitter_email, $this->notificication->submitter_name) : new Address($this->notification->lic_email, $this->notification->lic_name);
+        
         return new Envelope(
             subject: 'Activity Notification Submitted',
+            replyTo: [$reply],
         );
     }
 

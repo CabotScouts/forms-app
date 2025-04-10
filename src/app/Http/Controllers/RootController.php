@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\{Mail, Storage, Validator};
+use Illuminate\Support\Facades\{Storage, Validator};
 
 use App\Mail\NotificationSubmitted;
 use App\Models\{Notification, Upload};
@@ -92,6 +92,7 @@ class RootController
       }
     }
     $notification->uploads()->saveMany($uploads);
+    $notification->send();
 
     session()->flash('alert', [
       'success' => 'Your activity notification has been submitted.'
@@ -105,5 +106,12 @@ class RootController
   {
     $n = Notification::findOrFail($id);
     return new NotificationSubmitted($n);
+  }
+
+  public function resend($id)
+  {
+    $n = Notification::findOrFail($id);
+    $n->send();
+    return redirect()->route("root.index");
   }
 }

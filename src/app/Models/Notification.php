@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\{Builder, Model, Prunable, SoftDeletes};
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Mail;
+
+use App\Mail\NotificationSubmitted;
 
 class Notification extends Model
 {
@@ -20,6 +23,20 @@ class Notification extends Model
     public function uploads(): HasMany
     {
         return $this->hasMany(Upload::class);
+    }
+
+    public function send(): void
+    {
+        $submitter = $this->submitter_email ?? $this->lic_email;
+        $to = [config('scout.programme_team_email'), $submitter];
+        $cc = [config('scout.dlv_email'), $this->team_leader_email];
+
+        if($submitter != $this->lic_email) {
+            $cc[] = $this->lic_email;
+        }
+
+        $m = Mail::to($to)->cc($cc);
+        $m->queue(new NotificationSubmitted($this));
     }
 
     public function prunable(): Builder
