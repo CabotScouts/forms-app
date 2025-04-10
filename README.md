@@ -4,8 +4,9 @@
 * ~~file uploads working from filepond component~~
 * ~~uploaded files related to notification being submitted~~
 * ~~fix upload size limits in PHP (and nginx?)~~
-* get form data sent out as email to DLV, Programme Team Lead(?), LIC, submitter, permit holder, GLV/TL (so many emails...) -> this will need sendgrid? SMTP relay might see this as spam...
+* ~~get form data sent out as email to DLV, Programme Team Lead(?), LIC, submitter, GLV/TL~~
 * ~~setup hCaptcha properly~~
+* base tests to confirm a properly filled out form will get processed/email sent
 
 ## Improvements to add
 ### User Experience
@@ -25,6 +26,3 @@
 * Contact emails - for Groups and also for programme team/DLV
 * approvals workflow
 * permissions to cover all the above
-
-### Tests
-* add some I suppose
