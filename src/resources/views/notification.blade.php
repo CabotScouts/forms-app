@@ -1,8 +1,15 @@
 @extends('template')
 @section('title', 'Activity Notification')
 @section('content')
+  <div class="alert alert-danger">
+    This form is not yet active, please continue to use the <a
+      href="https://bristolcabotscouts.org.uk/leader-resources/notification-guidance/activity-notification-form/"
+      class="alert-link" target="_blank" ref="nofollow noreferrer">existing activity notification form</a> until it is
+    replaced.
+  </div>
+
   <div class="row row-cols-1">
-    <form action="{{ route('root.submit') }}" method="POST" id="notification">
+    <form action="{{ route('notification.submit') }}" method="POST" id="notification">
       {{-- Form Introduction Header --}}
       <div class="col mb-2">
         <div class="card">

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\{Storage, Validator};
 use App\Mail\NotificationSubmitted;
 use App\Models\{Notification, Upload};
 
-class RootController
+class ActivityNotificationController
 {
   public function index()
   {
@@ -99,7 +99,7 @@ class RootController
     ]);
 
 
-    return redirect()->route("root.index");
+    return redirect()->route("notification.form");
   }
 
   public function demo($id)
@@ -112,6 +112,11 @@ class RootController
   {
     $n = Notification::findOrFail($id);
     $n->send();
-    return redirect()->route("root.index");
+
+    session()->flash('alert', [
+      'success' => 'Your activity notification has been resent.'
+    ]);
+
+    return redirect()->route("notification.form");
   }
 }

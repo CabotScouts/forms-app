@@ -17,8 +17,7 @@
 <body class="bg-light">
   <nav class="navbar navbar-expand-md navbar-dark bg-primary">
     <div class="container-lg">
-      <a class="navbar-brand" href="{{ route('root.index') }}"><svg class="svg-icon icon-med icon-white"
-          viewBox="0 0 20 20">
+      <a class="navbar-brand" href="{{ route('root') }}"><svg class="svg-icon icon-med icon-white" viewBox="0 0 20 20">
           <path
             d="M5.38,9.11a6.13,6.13,0,0,1,.91,2.43h1a7,7,0,0,0-1.07-3,3.6,3.6,0,0,0-3-1.86h0A2.93,2.93,0,0,0,.91,7.81,3,3,0,0,0,.3,10.39l1-.21a2.1,2.1,0,0,1,.42-1.76A1.92,1.92,0,0,1,3.2,7.7h0A2.73,2.73,0,0,1,5.38,9.11Z">
           </path>
@@ -39,7 +38,10 @@
       </button>
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav mr-auto mb-2 mb-md-0">
-          @include('components.nav-item', ['name' => 'Submit Notification', 'route' => 'root.index'])
+          @include('components.nav-item', [
+              'name' => 'Submit Notification',
+              'route' => 'notification.form',
+          ])
           <li><a class="nav-link" href="https://cabotscouts.org.uk" target="_blank">Cabot Scouts</a></li>
         </ul>
 
@@ -57,14 +59,6 @@
   </nav>
   <div class="container-lg my-4">
     @include('components.alerts')
-
-    <div class="alert alert-danger">
-      This form is not yet active, please continue to use the <a
-        href="https://bristolcabotscouts.org.uk/leader-resources/notification-guidance/activity-notification-form/"
-        class="alert-link" target="_blank" ref="nofollow noreferrer">existing activity notification form</a> until it is
-      replaced.
-    </div>
-
     @yield('content')
   </div>
   <div class="text-center mt-2">
