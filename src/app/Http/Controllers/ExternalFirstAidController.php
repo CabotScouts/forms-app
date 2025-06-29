@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\{Storage, Validator};
 use App\Mail\NotificationSubmitted;
 use App\Models\{Notification, Upload};
 
-class FirstAidRecordingController
+class ExternalFirstAidController
 {
   public function index()
   {

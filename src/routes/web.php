@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
   ActivityNotificationController, 
   AuthController,
-  FirstAidRecordingController,
+  ExternalFirstAidController,
+  InternalFirstAidController,
   RootController,
 };
 
@@ -27,7 +28,9 @@ Route::controller(ActivityNotificationController::class)->prefix('/activity-noti
 });
 
 
-Route::controller(FirstAidRecordingController::class)->prefix('/first-aid')->group(function () {
-  Route::get('/', 'index')->name('firstaid.form');
-  Route::post('/submit', 'submit')->name('firstaid.submit');
+Route::prefix('/first-aid')->group(function () {
+  Route::get('/internal', [InternalFirstAidController::class, 'index'])->name('fa.internal.form');
+  Route::post('/internal/submit', [InternalFirstAidController::class, 'submit'])->name('fa.internal.submit');
+  Route::get('/external', [ExternalFirstAidController::class, 'index'])->name('fa.external.form');
+  Route::post('/external/submit', [ExternalFirstAidController::class, 'submit'])->name('fa.external.submit');
 });
