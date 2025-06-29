@@ -36,7 +36,7 @@ class ActivityNotificationController
       'location' => ['required'],
       'description' => ['required'],
       'activity_leader' => ['nullable', 'max:255'],
-      'risk_assessments' => ['required'],
+      'uploads' => ['required'],
       'intouch' => ['required'],
       'team_leader_email' => ['required', 'email'],
       'h-captcha-response' => ['required', 'hcaptcha'],
@@ -65,7 +65,7 @@ class ActivityNotificationController
       'description' => 'activity details',
       'activity_leader' => 'permit holder/activity leader details',
       'activity_leader_email' => 'permit holder/activity leader email address',
-      'risk_assessments' => 'risk assessments',
+      'uploads' => 'risk assessments',
       'intouch' => 'inTouch arrangements',
       'team_leader_email' => 'GLV/Team Leader email address',
     ];
