@@ -74,7 +74,7 @@ class ActivityNotificationController
     $notification = Notification::create($validated);
 
     $filepond = app(\Sopamo\LaravelFilepond\Filepond::class);
-    $submitted = json_decode($validated["risk_assessments"]);
+    $submitted = json_decode($validated["uploads"]);
     
     $uploads = [];
     foreach($submitted as $sid) {
