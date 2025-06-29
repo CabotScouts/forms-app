@@ -11,7 +11,7 @@
     rel="stylesheet">
   @stack('head-additional')
 
-  <title>@yield('title', 'Notify') - {{ config('scout.district') }} Scout District</title>
+  <title>@yield('title', 'Forms') - {{ config('scout.district') }} Scouts</title>
 </head>
 
 <body class="bg-light">
@@ -38,11 +38,23 @@
       </button>
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav mr-auto mb-2 mb-md-0">
-          @include('components.nav-item', [
-              'name' => 'Submit Notification',
-              'route' => 'notification.form',
-          ])
-          <li><a class="nav-link" href="https://cabotscouts.org.uk" target="_blank">Cabot Scouts</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-expanded="false">
+              All Forms
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <a class="dropdown-item" href="{{ route('fa.internal.form') }}">First Aid - Internal Qualification</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{{ route('fa.external.form') }}">First Aid - External Qualification</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://cabotscouts.org.uk">Cabot Scouts</a>
+          </li>
         </ul>
 
         {{--
@@ -66,7 +78,7 @@
       <div class="logo-inline-purple logo-inline-w150 mb-4">
         <h6>{{ config('scout.district') }}</h6>
       </div>
-      <p class="text-muted mb-4"><small>&copy; {{ config('scout.district') }} Scout District
+      <p class="text-muted mb-4"><small>&copy; {{ config('scout.district') }} Scouts
           {{ date('Y') }}</small>
       </p>
     </div>
