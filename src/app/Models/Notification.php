@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\{Builder, Model, SoftDeletes};
 use Illuminate\Support\Facades\Mail;
 
-use App\Traits\{HasUploads, IsGarbageCollected};
+use App\Traits\{AcceptsUploads, IsGarbageCollected};
 use App\Mail\NotificationSubmitted;
 
 class Notification extends Model
 {
-    use HasUploads, IsGarbageCollected, SoftDeletes;
+    use AcceptsUploads, IsGarbageCollected, SoftDeletes;
 
     protected $with = ['uploads'];
 
