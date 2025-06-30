@@ -99,7 +99,7 @@ class ActivityNotificationController
     ]);
 
 
-    return redirect()->route("notification.form");
+    return redirect()->route("root");
   }
 
   public function demo($id)
