@@ -21,7 +21,7 @@ class InternalFirstAidController
     $rules = [
       'name' => ['required', 'max:255'],
       'email' => ['required', 'email', 'max:255'],
-      'membership' => ['required', 'number', 'max:255'],
+      'membership' => ['required', 'numeric', 'max:255'],
       'uploads' => ['required'],
       'additional_information' => ['text'],
       'h-captcha-response' => ['required', 'hcaptcha'],
@@ -40,33 +40,14 @@ class InternalFirstAidController
     ];
 
     $validated = Validator::make($request->all(), $rules, $messages, $names)->validate();
-    $notification = Notification::create($validated);
-
-    $filepond = app(\Sopamo\LaravelFilepond\Filepond::class);
-    $submitted = json_decode($validated["uploads"]);
-    
-    $uploads = [];
-    foreach($submitted as $sid) {
-      $temppath = $filepond->getPathFromServerId($sid);
-      if(Storage::exists($temppath)) {
-        $file = basename($temppath);
-        $path = sprintf("uploads/%s_%s", $notification->id, $file);
-        $fullpath = sprintf("public/%s", $path);
-        Storage::move($temppath, $fullpath);
-
-        $u = new Upload;
-        $u->name = $file;
-        $u->path = $path;
-        $uploads[] = $u;
-      }
-    }
-    $notification->uploads()->saveMany($uploads);
-    $notification->send();
+    $submission = FirstAidValidation::create($validated);
+    $submission->type = 'internal';
+    $submission->processUploads($validated["uploads"]);
+    $submission->send();
 
     session()->flash('alert', [
       'success' => 'Your internal qualification has been submitted.'
     ]);
-
 
     return redirect()->route("root");
   }
