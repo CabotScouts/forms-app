@@ -2,15 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\{Builder, Model, SoftDeletes};
+use Illuminate\Database\Eloquent\{Builder, Model, Prunable, SoftDeletes};
 use Illuminate\Support\Facades\Mail;
 
-use App\Traits\{AcceptsUploads, IsGarbageCollected};
+use App\Traits\AcceptsUploads;
 use App\Mail\NotificationSubmitted;
 
 class Notification extends Model
 {
-    use AcceptsUploads, IsGarbageCollected, SoftDeletes;
+    use AcceptsUploads, Prunable, SoftDeletes;
 
     protected $with = ['uploads'];
 
@@ -35,5 +35,13 @@ class Notification extends Model
         $m->queue(new NotificationSubmitted($this));
     }
 
-    
+    public function prunable(): Builder
+    {
+        return static::where('date', '<=', now()->subMonths(3));
+    }
+
+    public function pruning(): void
+    {
+        $this->removeUploads();
+    }    
 }

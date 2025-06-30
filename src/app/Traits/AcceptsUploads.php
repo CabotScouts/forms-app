@@ -39,4 +39,13 @@ trait AcceptsUploads
         
         $this->uploads()->saveMany($uploads);
     }
+
+    public function removeUploads()
+    {
+        foreach($this->uploads()->get() as $upload)
+        {
+            $upload->deleteFile();
+            $upload->delete();
+        }
+    }
 }
