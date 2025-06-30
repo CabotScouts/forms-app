@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\{Storage, Validator};
+use Illuminate\Support\Facades\Validator;
 
 use App\Mail\NotificationSubmitted;
 use App\Models\{Notification, Upload};
@@ -72,26 +72,7 @@ class ActivityNotificationController
 
     $validated = Validator::make($request->all(), $rules, $messages, $names)->validate();
     $notification = Notification::create($validated);
-
-    $filepond = app(\Sopamo\LaravelFilepond\Filepond::class);
-    $submitted = json_decode($validated["uploads"]);
-    
-    $uploads = [];
-    foreach($submitted as $sid) {
-      $temppath = $filepond->getPathFromServerId($sid);
-      if(Storage::exists($temppath)) {
-        $file = basename($temppath);
-        $path = sprintf("uploads/%s_%s", $notification->id, $file);
-        $fullpath = sprintf("public/%s", $path);
-        Storage::move($temppath, $fullpath);
-
-        $u = new Upload;
-        $u->name = $file;
-        $u->path = $path;
-        $uploads[] = $u;
-      }
-    }
-    $notification->uploads()->saveMany($uploads);
+    $notification->processUploads($validated["uploads"]);
     $notification->send();
 
     session()->flash('alert', [
