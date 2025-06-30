@@ -71,6 +71,7 @@ class ActivityNotificationController
     ];
 
     $validated = Validator::make($request->all(), $rules, $messages, $names)->validate();
+
     $notification = Notification::create($validated);
     $notification->processUploads($validated["uploads"]);
     $notification->send();
@@ -78,7 +79,6 @@ class ActivityNotificationController
     session()->flash('alert', [
       'success' => 'Your activity notification has been submitted.'
     ]);
-
 
     return redirect()->route("root");
   }
