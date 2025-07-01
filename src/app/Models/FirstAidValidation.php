@@ -14,6 +14,13 @@ class FirstAidValidation extends Model
     protected $with = ['uploads'];
     protected $fillable = ['name', 'email', 'membership', 'date', 'additional'];
 
+    protected function casts(): array
+    {
+        return [
+            'date' => 'datetime',
+        ];
+    }
+
     public function send()
     {
         $m = Mail::to(config('scout.first_aid_validator_email'));

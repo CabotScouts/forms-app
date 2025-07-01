@@ -4,13 +4,13 @@
 <small>Submitted: {{ $validation->created_at }}</small>
 
 <x-mail::table>
-| Validation Information |                                |
-| :--------------------- | :----------------------------- |
-| Name                   | {{ $validation->name }}        |
-| Email                  | {{ $validation->email }}       |
-| Membership Number      | {{ $validation->membership }}  |
-| Validation Type        | {{ $validation->type }}        |
-| Course Date            | {{ $validation->date }}        |
+| Validation Information |                                          |
+| :--------------------- | :--------------------------------------- |
+| Validation Type        | {{ ucfirst($validation->type) }}         |
+| Volunteer              | {{ $validation->name }}                  |
+| Email                  | {{ $validation->email }}                 |
+| Membership Number      | {{ $validation->membership }}            |
+| Course Date            | {{ $validation->date->format('j M Y') }} |
 </x-mail::table>
 
 ## Submitted Evidence
