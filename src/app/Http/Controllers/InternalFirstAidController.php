@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{Storage, Validator};
 
 use App\Mail\NotificationSubmitted;
-use App\Models\{Notification, Upload};
+use App\Models\FirstAidValidation;
 
 class InternalFirstAidController
 {
@@ -23,7 +23,7 @@ class InternalFirstAidController
       'email' => ['required', 'email', 'max:255'],
       'membership' => ['required', 'numeric', 'max:255'],
       'uploads' => ['required'],
-      'additional_information' => ['text'],
+      'additional' => ['text'],
       'h-captcha-response' => ['required', 'hcaptcha'],
     ];
 
@@ -35,7 +35,7 @@ class InternalFirstAidController
       'name' => 'Volunteers\'s name',
       'email' => 'Volunteer\'s email address',
       'membership' => 'Volunteer\'s membership number',
-      'additional_information' => "additional information",
+      'additional' => "additional information",
       'uploads' => 'evidence',
     ];
 
@@ -43,7 +43,7 @@ class InternalFirstAidController
     $submission = FirstAidValidation::create($validated);
     $submission->type = 'internal';
     $submission->processUploads($validated["uploads"]);
-    $submission->send();
+    // $submission->send();
 
     session()->flash('alert', [
       'success' => 'Your internal qualification has been submitted.'

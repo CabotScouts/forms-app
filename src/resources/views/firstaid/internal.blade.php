@@ -86,6 +86,26 @@
         </div>
       </div>
 
+      <div class="col mb-2">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Additional Information</h4>
+
+            <p class="card-text">
+              If it is not visible on your certificate, please provide the name and membership number of the First
+              Response Trainer who delivered the course you attended.
+            </p>
+
+            <div class="form-group mb-0">
+              <label for="additional">Additional Information</label>
+              <textarea class="form-control @error('additional') is-invalid @enderror" id="additional" name="additional"
+                rows="4">{{ old('additional', $form) }}</textarea>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
       {{-- CAPTCHA, CSRF, and submit --}}
       <div class="col mb-2">
         <div class="card">
