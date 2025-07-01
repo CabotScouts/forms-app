@@ -12,7 +12,7 @@ class FirstAidValidation extends Model
     use AcceptsUploads, Prunable, SoftDeletes;
 
     protected $with = ['uploads'];
-    protected $fillable = ["name", "email", "membership", "additional"];
+    protected $fillable = ['name', 'email', 'membership', 'date', 'additional'];
 
     public function send()
     {

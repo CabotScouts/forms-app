@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string("name");
             $table->string("email");
             $table->string("membership");
+            $table->date("date");
             $table->text("additional")->nullable();
             $table->timestamps();
             $table->softDeletes();
