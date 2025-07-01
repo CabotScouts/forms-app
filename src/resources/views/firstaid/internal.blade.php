@@ -89,15 +89,19 @@
       <div class="col mb-2">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Additional Information</h4>
+            <h4 class="card-title">Course Information</h4>
 
-            <p class="card-text">
-              If it is not visible on your certificate, please provide the name and membership number of the First
-              Response Trainer who delivered the course you attended.
-            </p>
+            <div class="form-group">
+              <label for="date">Course Date<span class="text-danger">*</span></label>
+              <input type="date" class="form-control @error('date') is-invalid @enderror" id="date" name="date"
+                value="{{ old('date', $form) }}" required>
+            </div>
 
             <div class="form-group mb-0">
-              <label for="additional">Additional Information</label>
+              <label for="additional">
+                If it is not visible on your certificate, please provide the name and membership number of the First
+                Response Trainer who delivered the course you attended.
+              </label>
               <textarea class="form-control @error('additional') is-invalid @enderror" id="additional" name="additional"
                 rows="4">{{ old('additional', $form) }}</textarea>
             </div>
