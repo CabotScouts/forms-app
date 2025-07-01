@@ -141,7 +141,7 @@
 
             <input name="uploads" id="uploads" type="hidden" value="">
             <button type="submit" class="btn btn-lg btn-primary" id="submit" name="submit" value="true">
-              Submit internal qualification
+              Submit external qualification
             </button>
           </div>
         </div>
