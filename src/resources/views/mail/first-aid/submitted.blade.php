@@ -1,12 +1,23 @@
 <x-mail::message>
-# Introduction
+# First Response Validation Request
 
-The body of your message.
+<small>Submitted: {{ $validation->created_at }}</small>
 
-<x-mail::button :url="''">
-Button Text
-</x-mail::button>
+<x-mail::table>
+| Validation Information |                                |
+| :--------------------- | :----------------------------- |
+| Name                   | {{ $validation->name }}        |
+| Email                  | {{ $validation->email }}       |
+| Membership Number      | {{ $validation->membership }}  |
+| Validation Type        | {{ $validation->type }}        |
+| Course Date            | {{ $validation->date }}        |
+</x-mail::table>
 
-Thanks,<br>
-{{ config('app.name') }}
+## Submitted Evidence
+@foreach($validation->uploads()->get() as $upload)
+* <x-mail::link :url="$upload->url()">{{ $upload->name }}</x-mail::link>
+@endforeach
+
+## Additional Information
+{{ $validation->additional ?? "*None submitted*" }}
 </x-mail::message>

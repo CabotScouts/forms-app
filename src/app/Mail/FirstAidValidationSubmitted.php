@@ -30,7 +30,7 @@ class FirstAidValidationSubmitted extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'mail.first-aid-validation.submitted',
+            markdown: 'mail.first-aid.submitted',
         );
     }
 
