@@ -24,8 +24,8 @@ class Notification extends Model
     public function send(): void
     {
         $submitter = $this->submitter_email ?? $this->lic_email;
-        $to = [config('scout.programme_team_email'), $submitter];
-        $cc = [config('scout.dlv_email'), $this->team_leader_email];
+        $to = [config('scout.activity_notification_email'), $submitter];
+        $cc = [$this->team_leader_email];
 
         if($submitter != $this->lic_email) {
             $cc[] = $this->lic_email;
