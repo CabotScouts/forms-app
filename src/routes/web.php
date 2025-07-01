@@ -23,7 +23,8 @@ Route::controller(RootController::class)->group(function () {
 Route::controller(ActivityNotificationController::class)->prefix('/activity-notification')->group(function () {
   Route::get('/', 'index')->name('notification.form');
   Route::post('/submit', 'submit')->name('notification.submit');
-  Route::get('/demo/{id}', 'demo');
+  Route::get('/view/{id}', 'view');
+  Route::get('/resend/{id}', 'resend');
 });
 
 
@@ -32,4 +33,6 @@ Route::controller(FirstAidController::class)->prefix('/first-aid')->group(functi
   Route::post('/internal/submit', 'submitInternal')->name('fa.internal.submit');
   Route::get('/external', 'external')->name('fa.external.form');
   Route::post('/external/submit', 'submitExternal')->name('fa.external.submit');
+  Route::get('/view/{id}', 'view');
+  Route::get('/resend/{id}', 'resend');
 });

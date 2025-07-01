@@ -83,7 +83,7 @@ class ActivityNotificationController
     return redirect()->route("root");
   }
 
-  public function demo($id)
+  public function view($id)
   {
     $n = Notification::findOrFail($id);
     return new NotificationSubmitted($n);
@@ -95,9 +95,9 @@ class ActivityNotificationController
     $n->send();
 
     session()->flash('alert', [
-      'success' => 'Your activity notification has been resent.'
+      'success' => 'Activity notification has been resent.'
     ]);
 
-    return redirect()->route("notification.form");
+    return redirect()->route('root');
   }
 }

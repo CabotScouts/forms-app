@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{Storage, Validator};
 use Illuminate\Validation\Rule;
 
-use App\Mail\NotificationSubmitted;
+use App\Mail\FirstAidValidationSubmitted;
 use App\Models\FirstAidValidation;
 
 class FirstAidController
@@ -110,4 +110,21 @@ class FirstAidController
     return redirect()->route("root");
   }
 
+  public function view($id)
+  {
+    $v = FirstAidValidation::findOrFail($id);
+    return new FirstAidValidationSubmitted($v);
+  }
+
+  public function resend($id)
+  {
+    $v = FirstAidValidation::findOrFail($id);
+    $v->send();
+
+    session()->flash('alert', [
+      'success' => 'First Aid validation has been resent.'
+    ]);
+
+    return redirect()->route('root');
+  }
 }
