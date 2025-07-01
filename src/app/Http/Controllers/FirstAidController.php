@@ -9,14 +9,14 @@ use Illuminate\Support\Facades\{Storage, Validator};
 use App\Mail\NotificationSubmitted;
 use App\Models\FirstAidValidation;
 
-class InternalFirstAidController
+class FirstAidController
 {
-  public function index()
+  public function internal()
   {
     return view('firstaid.internal', ["form" => false]);
   }
 
-  public function submit(Request $request)
+  public function submitInternal(Request $request)
   {
     $rules = [
       'name' => ['required', 'max:255'],
@@ -50,6 +50,11 @@ class InternalFirstAidController
     ]);
 
     return redirect()->route("root");
+  }
+
+  public function external()
+  {
+    return view('firstaid.external', ["form" => false]);
   }
 
 }
