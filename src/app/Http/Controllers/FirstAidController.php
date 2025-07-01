@@ -51,8 +51,8 @@ class FirstAidController
     $submission = FirstAidValidation::create($validated);
     $submission->type = 'internal';
     $submission->processUploads($validated["uploads"]);
-    // $submission->send();
     $submission->save();
+    $submission->send();
 
     session()->flash('alert', [
       'success' => 'Your internal qualification has been submitted.'
@@ -100,8 +100,8 @@ class FirstAidController
     $submission = FirstAidValidation::create($validated);
     $submission->type = 'external';
     $submission->processUploads($validated["uploads"]);
-    // $submission->send();
     $submission->save();
+    $submission->send();
 
     session()->flash('alert', [
       'success' => 'Your external qualification has been submitted.'
