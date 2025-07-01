@@ -117,12 +117,9 @@
                 value="{{ old('date', $form) }}" required>
             </div>
 
-            <p class="card-text">
-              Please provide the name of the Awarding Organisation for the external first aid course.
-            </p>
-
             <div class="form-group mb-0">
-              <label for="additional">Additional Information</label>
+              <label for="additional">Please provide the name of the Awarding Organisation for the external first aid
+                course.</label>
               <textarea class="form-control @error('additional') is-invalid @enderror" id="additional" name="additional"
                 rows="4">{{ old('additional', $form) }}</textarea>
             </div>
