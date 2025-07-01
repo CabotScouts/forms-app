@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('uploads', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('notification_id')->constrained();
+            $table->integer('uploadable_id')->nullable();
+            $table->string('uploadable_type')->nullable();
             $table->string('path');
             $table->timestamps();
         });

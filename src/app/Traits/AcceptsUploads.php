@@ -2,7 +2,8 @@
 
 namespace App\Traits;
 
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
 use App\Models\Upload;
@@ -10,9 +11,9 @@ use App\Models\Upload;
 trait AcceptsUploads
 {
 
-    public function uploads(): HasMany
+    public function uploads(): MorphMany
     {
-        return $this->hasMany(Upload::class);
+        return $this->morphMany(Upload::class, 'uploadable');
     }
 
     public function processUploads($submitted)
@@ -25,15 +26,11 @@ trait AcceptsUploads
             $temppath = $filepond->getPathFromServerId($sid);
             if(Storage::exists($temppath)) {
                 $file = basename($temppath);
-                // NEED TO MAKE UNIQUE NAMES HERE
-                $path = sprintf("uploads/%s", $file);
+                $uuid = Str::uuid()->toString();
+                $path = sprintf("uploads/%s_%s", $uuid, $file);
                 $fullpath = sprintf("public/%s", $path);
                 Storage::move($temppath, $fullpath);
-
-                $u = new Upload;
-                $u->name = $file;
-                $u->path = $path;
-                $uploads[] = $u;
+                $uploads[] = Upload::create(['name' => $file, 'path' => $path]);
             }
         }
         

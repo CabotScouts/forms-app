@@ -3,10 +3,18 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Facades\Storage;
 
 class Upload extends Model
 {
+    protected $fillable = ['name', 'path'];
+    
+    public function uploadable(): MorphTo
+    {
+        return $this->morphTo();
+    }
+
     public function url(): string
     {
         return asset("storage/" . $this->path);
