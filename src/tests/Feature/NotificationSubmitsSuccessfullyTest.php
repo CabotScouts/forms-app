@@ -31,6 +31,12 @@ class NotificationSubmitsSuccessfullyTest extends TestCase
         'h-captcha-response' => '10000000-aaaa-bbbb-cccc-000000000001',
     ];
 
+    public function test_form_is_viewable(): void
+    {
+        $response = $this->get(route('notification.form'));
+        $response->assertStatus(200);
+    }
+
     public function test_notification_is_submitted(): void
     {
         // 1 - upload a fake risk assessment

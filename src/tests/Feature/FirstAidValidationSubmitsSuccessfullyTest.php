@@ -26,6 +26,12 @@ class FirstAidValidationSubmitsSuccessfullyTest extends TestCase
         'h-captcha-response' => '10000000-aaaa-bbbb-cccc-000000000001',
     ];
 
+    public function test_form_is_viewable(): void
+    {
+        $response = $this->get(route('fa.form'));
+        $response->assertStatus(200);
+    }
+
     public function test_validation_is_submitted(): void
     {
         // 1 - upload fake evidence
