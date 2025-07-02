@@ -53,6 +53,7 @@ class NotificationSubmitsSuccessfullyTest extends TestCase
 
         Mail::fake();
         $response = $this->post(route('notification.submit', $data));
+        $response->assertStatus(302);
 
         // 3 - check notification and upload in DB, and mail was sent
         $this->assertDatabaseHas('notifications', ['lic_name' => 'John Smith']);
