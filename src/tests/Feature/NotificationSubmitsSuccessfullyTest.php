@@ -48,11 +48,11 @@ class NotificationSubmitsSuccessfullyTest extends TestCase
 
         // 2 - submit notification using base data and the uploaded file
         $data = array_merge($this->baseData, [
-            'risk_assessments' => json_encode([$sid]),
+            'uploads' => json_encode([$sid]),
         ]);
 
         Mail::fake();
-        $response = $this->post(route('root.submit', $data));
+        $response = $this->post(route('notification.submit', $data));
 
         // 3 - check notification and upload in DB, and mail was sent
         $this->assertDatabaseHas('notifications', ['lic_name' => 'John Smith']);
