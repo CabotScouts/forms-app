@@ -85,8 +85,8 @@
               </li>
               <li>If you attended a <em>First Aid at Work</em>, <em>Emergency First Aid at Work</em> or <em>RYA First
                   Aid</em>
-                course, you should also provide the certificate from the relevent <a
-                  href="https://hampshire-scouts.thinkific.com/" target="_blank">Hampshire e-learning conversion
+                course, the certificate from the relevent <a href="https://hampshire-scouts.thinkific.com/"
+                  target="_blank">Hampshire e-learning conversion
                   course</a></li>
             </ul>
             </p>
