@@ -1,5 +1,5 @@
 @extends('template')
-@section('title', 'Internal First Aid')
+@section('title', 'First Aid Validation')
 @include('components.form-js')
 @section('content')
   <div class="row row-cols-1">
