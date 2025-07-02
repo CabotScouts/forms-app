@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\{Builder, Model, Prunable, SoftDeletes};
+use Illuminate\Support\Facades\Mail;
 
 use App\Traits\AcceptsUploads;
 use App\Mail\FirstAidValidationSubmitted;
