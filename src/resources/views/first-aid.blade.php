@@ -80,7 +80,7 @@
               <li>
                 A completed <a
                   href="https://cabotscouts.org.uk/wp-content/uploads/2025/06/first-response-checklist-for-external-courses.pdf"
-                  target="_blank">signed checklist</a> from your external course trainer showing which First Response
+                  target="_blank">checklist</a> from your external course trainer showing which First Response
                 criteria your course covered, if you have this
               </li>
               <li>If you attended a <em>First Aid at Work</em>, <em>Emergency First Aid at Work</em> or <em>RYA First
