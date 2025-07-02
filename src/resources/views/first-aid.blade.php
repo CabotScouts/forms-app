@@ -65,7 +65,7 @@
             </p>
             <p class="card-text">
             <ul>
-              <li>the certificate from your internal first aid course</li>
+              <li>The certificate from your internal first aid course</li>
             </ul>
             </p>
 
