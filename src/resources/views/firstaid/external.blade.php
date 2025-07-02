@@ -71,7 +71,10 @@
             <ul>
               <li>The certificate from your external first aid course</li>
               <li>
-                A signed checklist from your external course trainer showing which First Response criteria your course
+                A <a
+                  href="https://cabotscouts.org.uk/wp-content/uploads/2025/06/first-response-checklist-for-external-courses.pdf"
+                  target="_blank">signed checklist</a> from your external course trainer showing which First Response
+                criteria your course
                 covered
               </li>
             </ul>
@@ -83,7 +86,8 @@
             </p>
             <p class="card-text">
             <ul>
-              <li>The certificate from the relevent Hampshire e-learning conversion course</li>
+              <li>The certificate from the relevent <a href="https://hampshire-scouts.thinkific.com/"
+                  target="_blank">Hampshire e-learning conversion course</a></li>
             </ul>
             </p>
 
