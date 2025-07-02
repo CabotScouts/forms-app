@@ -82,7 +82,7 @@
 
             <p class="card-text">
               If you attended a <em>First Aid at Work</em>, <em>Emergency First Aid at Work</em> or <em>RYA First Aid</em>
-              couse, you must also provide:
+              course, you must also provide:
             </p>
             <p class="card-text">
             <ul>
