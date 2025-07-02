@@ -48,8 +48,9 @@ class FirstAidController
     ];
 
     $validated = Validator::make($request->all(), $rules, $messages, $names)->validate();
-    $submission = FirstAidValidation::create($validated);
+    $submission = new FirstAidValidation;
     $submission->type = 'internal';
+    $submission->fill($validated);
     $submission->processUploads($validated["uploads"]);
     $submission->save();
     $submission->send();
@@ -97,8 +98,9 @@ class FirstAidController
     ];
 
     $validated = Validator::make($request->all(), $rules, $messages, $names)->validate();
-    $submission = FirstAidValidation::create($validated);
+    $submission = new FirstAidValidation;
     $submission->type = 'external';
+    $submission->fill($validated);
     $submission->processUploads($validated["uploads"]);
     $submission->save();
     $submission->send();
