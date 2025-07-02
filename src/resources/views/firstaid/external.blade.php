@@ -71,9 +71,9 @@
             <ul>
               <li>The certificate from your external first aid course</li>
               <li>
-                A <a
+                A completed <a
                   href="https://cabotscouts.org.uk/wp-content/uploads/2025/06/first-response-checklist-for-external-courses.pdf"
-                  target="_blank">signed checklist</a> from your external course trainer showing which First Response
+                  target="_blank">checklist</a> from your external course trainer showing which First Response
                 criteria your course
                 covered
               </li>
