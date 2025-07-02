@@ -46,8 +46,9 @@
 
             <div class="form-group mb-0">
               <label for="membership">Membership Number<span class="text-danger">*</span></label>
-              <input type="input" class="form-control @error('membership') is-invalid @enderror" id="membership"
-                name="membership" value="{{ old('membership', $form) }}" required>
+              <input type="text" inputmode="numeric" pattern="[0-9]+"
+                class="form-control @error('membership') is-invalid @enderror" id="membership" name="membership"
+                value="{{ old('membership', $form) }}" required>
             </div>
 
           </div>
