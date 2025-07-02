@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('first_aid_validations', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', ['internal', 'external']);
             $table->string("name");
             $table->string("email");
             $table->string("membership");

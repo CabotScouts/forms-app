@@ -3,17 +3,18 @@
 @include('components.form-js')
 @section('content')
   <div class="row row-cols-1">
-    <form action="{{ route('fa.internal.submit') }}" method="POST" id="submit">
+    <form action="{{ route('fa.submit') }}" method="POST" id="submit">
 
       <div class="col mb-2">
         <div class="card">
           <div class="card-body">
-            <h2 class="card-title">Internal First Aid Qualification</h2>
+            <h2 class="card-title">First Aid Validation</h2>
 
             <p class="card-text">
-              Volunteers that have completed an internal qualification (a Scout First Response course
-              delivered elsewhere in Scouting) will need to submit their certificate to the District in order to have
-              their training recorded.
+              First Aid training can only be added to a volunteers learning record by a District Learning Assessor, after
+              a trainer has confirmed the First Response course criteria has been met. Volunteers will need to submit
+              evidence from the course they have attended so a trainer can make the necessary checks and validate the
+              training.
             </p>
 
             <p class="card-text">More information about recording First Aid training can be found on the
@@ -59,12 +60,40 @@
             <h4 class="card-title">Upload evidence</h4>
 
             <p class="card-text">
-              You must provide
+              If your First Aid course was an <strong>internal</strong> course (First Response training delivered within
+              Scouting), you should provide:
             </p>
             <p class="card-text">
             <ul>
               <li>the certificate from your internal first aid course</li>
             </ul>
+            </p>
+
+            <p class="card-text">
+              If you attended an <strong>external</strong> course (a First Aid course delivered outside of Scouting, by a
+              regulated body) you should provide:
+            </p>
+            <p class="card-text">
+            <ul>
+              <li>The certificate from your external first aid course</li>
+              <li>
+                A completed <a
+                  href="https://cabotscouts.org.uk/wp-content/uploads/2025/06/first-response-checklist-for-external-courses.pdf"
+                  target="_blank">signed checklist</a> from your external course trainer showing which First Response
+                criteria your course covered, if you have this
+              </li>
+              <li>If you attended a <em>First Aid at Work</em>, <em>Emergency First Aid at Work</em> or <em>RYA First
+                  Aid</em>
+                course, you should also provide the certificate from the relevent <a
+                  href="https://hampshire-scouts.thinkific.com/" target="_blank">Hampshire e-learning conversion
+                  course</a></li>
+            </ul>
+            </p>
+
+            <p class="card-text">
+              Ideally, you should submit your evidence as PDF files, and if possible <a
+                href="https://www.adobe.com/uk/acrobat/online/merge-pdf.html" target="_blank" rel="nofollow">merge
+                multiple PDF files into a single file</a>.
             </p>
 
             <div class="form-group mb-0">
@@ -95,12 +124,17 @@
               <label for="date">Course Date<span class="text-danger">*</span></label>
               <input type="date" class="form-control @error('date') is-invalid @enderror" id="date" name="date"
                 value="{{ old('date', $form) }}" required>
+              <small class="form-text text-muted">
+                If you have completed multiple elements (an external course, and e-learning) this should be the earliest
+                date.
+              </small>
             </div>
 
             <div class="form-group mb-0">
               <label for="additional">
                 If it is not visible on your certificate, please provide the name and membership number of the First
-                Response Trainer who delivered the course you attended.
+                Response Trainer who delivered the internal course you attended, or the name of the Awarding Organisation
+                for an external first aid course.
               </label>
               <textarea class="form-control @error('additional') is-invalid @enderror" id="additional" name="additional"
                 rows="4">{{ old('additional', $form) }}</textarea>
@@ -120,7 +154,7 @@
 
             <input name="uploads" id="uploads" type="hidden" value="">
             <button type="submit" class="btn btn-lg btn-primary" id="submit" name="submit" value="true">
-              Submit internal qualification
+              Submit qualification for validation
             </button>
           </div>
         </div>

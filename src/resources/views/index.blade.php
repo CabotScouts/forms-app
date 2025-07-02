@@ -16,37 +16,20 @@
     <div class="col">
       <div class="card h-100">
         <div class="card-body">
-          <h3 class="card-title">Internal First Aid Qualification</h3>
-          <p class="card-text">Volunteers that have completed an internal qualification (a Scout First Response course
-            delivered elsewhere in Scouting) will need to submit their certificate to the District in order to have their
-            training recorded.</p>
+          <h3 class="card-title">First Aid Validation</h3>
+          <p class="card-text">
+            First Aid training can only be added to a volunteers learning record by a District Learning Assessor, after
+            a trainer has confirmed the First Response course criteria has been met. Volunteers will need to submit
+            evidence from the course they have attended so a trainer can make the necessary checks and validate the
+            training.
+          </p>
         </div>
 
         <div class="card-footer">
-          <a href="{{ route('fa.internal.form') }}" class="btn btn-primary">Submit qualification</a>
+          <a href="{{ route('fa.form') }}" class="btn btn-primary">Submit qualification for validation</a>
         </div>
       </div>
     </div>
 
-    <div class="col">
-      <div class="card h-100">
-        <div class="card-body">
-          <h3 class="card-title">External First Aid Qualification</h3>
-          <p class="card-text">Any course that is set by a regulated body and covers the Scouts First Response criteria,
-            recognition, and length requirements can be considered as a suitable alternative to a First Response
-            course.All
-            external qualifications must be checked and approved by a District First Response
-            Trainer in order to confirm these requirements have been met.</p>
-
-          <p class="card-text">Volunteers will need to submit their
-            qualification certificate, along with relevant evidence in order to have their learning
-            record updated.</p>
-
-        </div>
-        <div class="card-footer">
-          <a href="{{ route('fa.external.form') }}" class="btn btn-primary">Submit qualification</a>
-        </div>
-      </div>
-    </div>
   </div>
 @endsection
