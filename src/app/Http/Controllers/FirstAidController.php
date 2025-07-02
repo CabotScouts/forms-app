@@ -4,20 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\{Storage, Validator};
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\View\View;
 
 use App\Mail\FirstAidValidationSubmitted;
 use App\Models\FirstAidValidation;
 
 class FirstAidController
 {
-  public function index()
+  public function index(): View
   {
     return view('first-aid', ["form" => false]);
   }
 
-  public function submit(Request $request)
+  public function submit(Request $request): RedirectResponse
   {
     $rules = [
       'name' => ['required', 'max:255'],
@@ -48,9 +49,7 @@ class FirstAidController
     ];
 
     $validated = Validator::make($request->all(), $rules, $messages, $names)->validate();
-    $submission = new FirstAidValidation;
-    $submission->fill($validated);
-    $submission->save();
+    $submission = FirstAidValidation::create($validated);
     $submission->processUploads($validated["uploads"]);
     $submission->send();
 
@@ -61,13 +60,13 @@ class FirstAidController
     return redirect()->route("root");
   }
 
-  public function view($id)
+  public function view($id): FirstAidValidationSubmitted
   {
     $v = FirstAidValidation::findOrFail($id);
     return new FirstAidValidationSubmitted($v);
   }
 
-  public function resend($id)
+  public function resend($id): RedirectResponse
   {
     $v = FirstAidValidation::findOrFail($id);
     $v->send();
