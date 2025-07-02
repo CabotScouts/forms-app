@@ -46,10 +46,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li>
-                <a class="dropdown-item" href="{{ route('fa.internal.form') }}">First Aid - Internal Qualification</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="{{ route('fa.external.form') }}">First Aid - External Qualification</a>
+                <a class="dropdown-item" href="{{ route('fa.form') }}">First Aid Validation</a>
               </li>
             </ul>
           </li>

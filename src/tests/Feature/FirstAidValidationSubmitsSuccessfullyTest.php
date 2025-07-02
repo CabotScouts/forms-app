@@ -13,7 +13,7 @@ use Panfu\Laravel\HCaptcha\HCaptcha;
 use App\Models\FirstAidValidation;
 use App\Mail\FirstAidValidationSubmitted;
 
-class ExternalValidationSubmitsSuccessfullyTest extends TestCase
+class FirstAidValidationSubmitsSuccessfullyTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -26,7 +26,7 @@ class ExternalValidationSubmitsSuccessfullyTest extends TestCase
         'h-captcha-response' => '10000000-aaaa-bbbb-cccc-000000000001',
     ];
 
-    public function test_external_validation_is_submitted(): void
+    public function test_validation_is_submitted(): void
     {
         // 1 - upload fake evidence
         $tmp = config('filepond.temporary_files_path', 'filepond');
@@ -47,11 +47,11 @@ class ExternalValidationSubmitsSuccessfullyTest extends TestCase
         ]);
 
         Mail::fake();
-        $response = $this->post(route('fa.external.submit', $data));
+        $response = $this->post(route('fa.submit', $data));
         $response->assertStatus(302);
 
         // 3 - check validation request and upload in DB, and mail was sent
-        $this->assertDatabaseHas('first_aid_validations', ['name' => 'John Smith', 'type' => 'external']);
+        $this->assertDatabaseHas('first_aid_validations', ['name' => 'John Smith']);
         $this->assertDatabaseHas('uploads', ['name' => 'checklist.pdf']);
         Mail::assertQueued(FirstAidValidationSubmitted::class);
     }

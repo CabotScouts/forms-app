@@ -6,7 +6,6 @@
 <x-mail::table>
 | Validation Information |                                          |
 | :--------------------- | :--------------------------------------- |
-| Validation Type        | {{ ucfirst($validation->type) }}         |
 | Volunteer              | {{ $validation->name }}                  |
 | Email                  | {{ $validation->email }}                 |
 | Membership Number      | {{ $validation->membership }}            |

@@ -32,10 +32,8 @@ Route::controller(ActivityNotificationController::class)->prefix('/activity-noti
 
 
 Route::controller(FirstAidController::class)->prefix('/first-aid')->group(function () {
-  Route::get('/internal', 'internal')->name('fa.internal.form');
-  Route::post('/internal/submit', 'submitInternal')->name('fa.internal.submit');
-  Route::get('/external', 'external')->name('fa.external.form');
-  Route::post('/external/submit', 'submitExternal')->name('fa.external.submit');
+  Route::get('/', 'index')->name('fa.form');
+  Route::post('/submit', 'submit')->name('fa.submit');
 
   if(config('app.debug')) {
     Route::get('/view/{id}', 'view');
