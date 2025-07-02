@@ -51,8 +51,8 @@ class FirstAidController
     $submission = new FirstAidValidation;
     $submission->type = 'internal';
     $submission->fill($validated);
-    $submission->processUploads($validated["uploads"]);
     $submission->save();
+    $submission->processUploads($validated["uploads"]);
     $submission->send();
 
     session()->flash('alert', [
@@ -101,8 +101,8 @@ class FirstAidController
     $submission = new FirstAidValidation;
     $submission->type = 'external';
     $submission->fill($validated);
-    $submission->processUploads($validated["uploads"]);
     $submission->save();
+    $submission->processUploads($validated["uploads"]);
     $submission->send();
 
     session()->flash('alert', [
