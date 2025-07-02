@@ -91,6 +91,12 @@
             </ul>
             </p>
 
+            <p class="card-text">
+              Ideally, you should submit your evidence as PDF files, and if possible <a
+                href="https://www.adobe.com/uk/acrobat/online/merge-pdf.html" target="_blank" rel="nofollow">merge
+                multiple PDF files into a single file</a>.
+            </p>
+
             <div class="form-group mb-0">
               <label for="filepond">Upload evidence<span class="text-danger">*</span></label>
 
@@ -119,6 +125,10 @@
               <label for="date">Course Date<span class="text-danger">*</span></label>
               <input type="date" class="form-control @error('date') is-invalid @enderror" id="date" name="date"
                 value="{{ old('date', $form) }}" required>
+              <small class="form-text text-muted">
+                If you have completed multiple elements (your external course, and e-learning) this should be the earliest
+                date.
+              </small>
             </div>
 
             <div class="form-group mb-0">
