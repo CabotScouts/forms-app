@@ -61,7 +61,7 @@
 
             <p class="card-text">
               If your First Aid course was an <strong>internal</strong> course (First Response training delivered within
-              Scouting), you should provide:
+              Scouting) you should provide:
             </p>
             <p class="card-text">
             <ul>
