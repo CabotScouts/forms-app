@@ -5,18 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\View\View;
 
 use App\Mail\NotificationSubmitted;
-use App\Models\{Notification, Upload};
+use App\Models\Notification;
 
 class ActivityNotificationController
 {
-  public function index()
+  public function index(): View
   {
     return view('notification', ["form" => false]);
   }
 
-  public function submit(Request $request)
+  public function submit(Request $request): RedirectResponse
   {
     $rules = [
       'lic_name' => ['required', 'max:255'],
@@ -71,7 +72,6 @@ class ActivityNotificationController
     ];
 
     $validated = Validator::make($request->all(), $rules, $messages, $names)->validate();
-
     $notification = Notification::create($validated);
     $notification->processUploads($validated["uploads"]);
     $notification->send();
@@ -83,13 +83,13 @@ class ActivityNotificationController
     return redirect()->route("root");
   }
 
-  public function view($id)
+  public function view($id): NotificationSubmitted
   {
     $n = Notification::findOrFail($id);
     return new NotificationSubmitted($n);
   }
 
-  public function resend($id)
+  public function resend($id): RedirectResponse
   {
     $n = Notification::findOrFail($id);
     $n->send();
