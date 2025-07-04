@@ -83,10 +83,11 @@
                   target="_blank">checklist</a> from your external course trainer showing which First Response
                 criteria your course covered, if you have this
               </li>
-              <li>If you attended a <em>First Aid at Work</em>, <em>Emergency First Aid at Work</em> or <em>RYA First
-                  Aid</em>
-                course, the certificate from the relevent <a href="https://hampshire-scouts.thinkific.com/"
-                  target="_blank">Hampshire e-learning conversion
+              <li>
+                If you attended a <em>First Aid at Work</em>, <em>Emergency First Aid at Work</em> or <em>RYA First
+                  Aid</em> course and didn't cover the additional required topics (sepsis, meningitis, dental injuries
+                - evidenced with the above checklist), the certificate from the relevent <a
+                  href="https://hampshire-scouts.thinkific.com/" target="_blank">Hampshire e-learning conversion
                   course</a></li>
             </ul>
             </p>
