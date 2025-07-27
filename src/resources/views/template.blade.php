@@ -52,7 +52,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://cabotscouts.org.uk">Cabot Scouts</a>
+            <a class="nav-link" href="https://cabotscouts.org.uk" target="_blank">Cabot Scouts</a>
           </li>
         </ul>
 
