@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\{
+  AccidentReportingController,
   ActivityNotificationController, 
   AuthController,
   FirstAidController,
@@ -30,10 +31,19 @@ Route::controller(ActivityNotificationController::class)->prefix('/activity-noti
   }
 });
 
-
 Route::controller(FirstAidController::class)->prefix('/first-aid')->group(function () {
   Route::get('/', 'index')->name('fa.form');
   Route::post('/submit', 'submit')->name('fa.submit');
+
+  if(config('app.debug')) {
+    Route::get('/view/{id}', 'view');
+    Route::get('/resend/{id}', 'resend');
+  }
+});
+
+Route::controller(AccidentReportingController::class)->prefix('/accident-report')->group(function () {
+  Route::get('/', 'index')->name('accident.form');
+  Route::post('/submit', 'submit')->name('accident.submit');
 
   if(config('app.debug')) {
     Route::get('/view/{id}', 'view');
