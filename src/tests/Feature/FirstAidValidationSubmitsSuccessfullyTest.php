@@ -54,7 +54,7 @@ class FirstAidValidationSubmitsSuccessfullyTest extends TestCase
 
         Mail::fake();
         $response = $this->post(route('fa.submit', $data));
-        $response->assertStatus(302);
+        $response->assertStatus(200);
 
         // 3 - check validation request and upload in DB, and mail was sent
         $this->assertDatabaseHas('first_aid_validations', ['name' => 'John Smith']);

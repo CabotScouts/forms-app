@@ -15,10 +15,10 @@ class FirstAidController
 {
   public function index(): View
   {
-    return view('first-aid', ["form" => false]);
+    return view('first-aid.form', ["form" => false]);
   }
 
-  public function submit(Request $request): RedirectResponse
+  public function submit(Request $request): View
   {
     $rules = [
       'name' => ['required', 'max:255'],
@@ -53,11 +53,7 @@ class FirstAidController
     $submission->processUploads($validated["uploads"]);
     $submission->send();
 
-    session()->flash('alert', [
-      'success' => 'Your First Aid validation has been submitted.'
-    ]);
-
-    return redirect()->route("root");
+    return view('first-aid.post-submission');
   }
 
   public function view($id): FirstAidValidationSubmitted
