@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
@@ -53,7 +54,13 @@ class AccidentReportingController
     ];
 
     $validated = Validator::make($request->all(), $rules, $messages, $names)->validate();
-    $report = AccidentReport::create($validated);
+
+    // reports must be kept until three years after accident date, or 21st birthday, whichever is latest
+    $dob = new Carbon($validated['their_dob']);
+    $when = new Carbon($validated["when"]);
+    $removal = $dob->addYears(18)->maximum($when)->addYears(3);
+
+    $report = AccidentReport::create([...$validated, 'remove_at' => $removal]);
     $report->send();
 
     return view('accident-report.post-submission', ['report' => $report]);

@@ -20,6 +20,7 @@
 | Their Unit          | {{ $report->their_unit }}                 |
 | When                | {{ $report->when->format('d/m/Y') }}      | 
 | Where               | {{ $report->where }}                      | 
+| Keep Report Until   | {{ $report->remove_at->format('d/m/Y') }} | 
 </x-mail::table>
 
 ## Accident Details

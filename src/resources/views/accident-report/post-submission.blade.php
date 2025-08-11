@@ -87,6 +87,11 @@
                 </tr>
               @endif
 
+              <tr>
+                <th scope="row">Keep Until</th>
+                <td>{{ $report->remove_at->format('d/m/Y') }}</td>
+              </tr>
+
             </tbody>
           </table>
 

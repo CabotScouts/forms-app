@@ -25,6 +25,7 @@ return new class extends Migration
             $table->text("treatment")->nullable();
             $table->boolean("further_reporting")->default(false);
             $table->timestamps();
+            $table->date("remove_at");
             $table->softDeletes();
         });
     }
