@@ -2,13 +2,6 @@
 @section('title', 'Activity Notification')
 @include('components.form-js')
 @section('content')
-  <div class="alert alert-danger">
-    This form is not yet active, please continue to use the <a
-      href="https://bristolcabotscouts.org.uk/leader-resources/notification-guidance/activity-notification-form/"
-      class="alert-link" target="_blank" ref="nofollow noreferrer">existing activity notification form</a> until it is
-    replaced.
-  </div>
-
   <div class="row row-cols-1">
     <form action="{{ route('notification.submit') }}" method="POST" id="form">
       {{-- Form Introduction Header --}}
@@ -18,7 +11,8 @@
             <h2 class="card-title">Activity Notification</h2>
 
             <p class="card-text">
-              Speel about Activity Notifications in Cabot...
+              This form is to notify the Cabot District team about activites which are taking place outside of the
+              District, or which fall within the definition of being an Adventurous Activity (POR 9.7).
             </p>
 
             <p class="card-text">

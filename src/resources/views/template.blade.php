@@ -46,6 +46,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li>
+                <a class="dropdown-item" href="{{ route('notification.form') }}">Activity Notification</a>
                 <a class="dropdown-item" href="{{ route('accident.form') }}">Accident Report</a>
                 <a class="dropdown-item" href="{{ route('fa.form') }}">First Aid Validation</a>
               </li>

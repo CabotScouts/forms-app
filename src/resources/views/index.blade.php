@@ -1,19 +1,23 @@
 @extends('template')
 @section('content')
   <div class="row row-cols-1 row-cols-md-2">
-    {{-- <div class="card">
-      <div class="card-body">
-        <h3 class="card-title">Activity Notification</h3>
-        <p class="card-text">
-          Wordssssss
-        </p>
-      </div>
-      <div class="card-footer">
-        <a href="{{ route('notification.form') }}" class="btn btn-primary">Submit notification</a>
-      </div>
-    </div> --}}
 
-    <div class="col">
+    <div class="col mb-2">
+      <div class="card h-100">
+        <div class="card-body">
+          <h3 class="card-title">Activity Notification</h3>
+          <p class="card-text">
+            This form is to notify the Cabot District team about activites which are taking place outside of the
+            District, or which fall within the definition of being an Adventurous Activity (POR 9.7).
+          </p>
+        </div>
+        <div class="card-footer">
+          <a href="{{ route('notification.form') }}" class="btn btn-primary">Submit notification</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col mb-2">
       <div class="card h-100">
         <div class="card-body">
           <h3 class="card-title">Report an Accident</h3>
@@ -30,7 +34,7 @@
       </div>
     </div>
 
-    <div class="col">
+    <div class="col mb-2">
       <div class="card h-100">
         <div class="card-body">
           <h3 class="card-title">First Aid Validation</h3>
