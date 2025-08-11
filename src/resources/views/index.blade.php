@@ -16,6 +16,23 @@
     <div class="col">
       <div class="card h-100">
         <div class="card-body">
+          <h3 class="card-title">Report an Accident</h3>
+          <p class="card-text">
+            All accidents which occur in a Scouting Unit the District is responsible for (i.e. an Explorer Unit
+            or Network) or during an event organised by a District team (e.g. Ten Tors or a training course) must be
+            reported to the District using this form.
+          </p>
+        </div>
+
+        <div class="card-footer">
+          <a href="{{ route('accident.form') }}" class="btn btn-primary">Submit accident report</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
           <h3 class="card-title">First Aid Validation</h3>
           <p class="card-text">
             First Aid training can only be added to a volunteers learning record by a District Learning Assessor, after

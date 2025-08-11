@@ -11,8 +11,8 @@
             <h2 class="card-title">Report an Accident</h2>
 
             <p class="card-text">
-              All accidents which occur in a Scouting Unit the District is responsible for (e.g. an Explorer Unit,
-              Network) or during an event organised by a District team (e.g. Ten Tors, or a training course) must be
+              All accidents which occur in a Scouting Unit the District is responsible for (i.e. an Explorer Unit
+              or Network) or during an event organised by a District team (e.g. Ten Tors or a training course) must be
               reported to the District using this form.
             </p>
 
@@ -52,7 +52,7 @@
               <small class="form-text text-muted">
                 Where in Scouting is this accident being reported from - for an Explorer activity this would be the
                 Explorer Scout Unit, for Network: "Network", for other District activities then
-                this is the relevant team which was responsible for organising this activity.
+                this is the relevant team which was responsible for organising this activity
               </small>
             </div>
 
@@ -82,7 +82,7 @@
               <input type="text" class="form-control @error('their_unit') is-invalid @enderror" id="their_unit"
                 name="their_unit" value="{{ old('their_unit') }}">
               <small class="form-text text-muted">
-                If different from the Reporting Unit, which Scouting Unit (e.g. Scout Group, or Explorer Unit) is this
+                If different from the Reporting Unit, which Scouting Unit (e.g. Scout Group or Explorer Unit) is this
                 person a member of
               </small>
             </div>
