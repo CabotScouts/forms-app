@@ -44,4 +44,6 @@ class AccidentReportSubmitsSuccessfullyTest extends TestCase
         $this->assertDatabaseHas('accident_reports', ['reporter_name' => 'John Smith']);
         Mail::assertQueued(AccidentReportSubmitted::class);
     }
+
+    // we should add some tests here to make sure removal date logic doesn't get broken
 }
