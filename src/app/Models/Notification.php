@@ -24,7 +24,7 @@ class Notification extends Model
     protected function casts(): array
     {
         return [
-            'date' => 'datetime',
+            'date' => 'date',
         ];
     }
 
