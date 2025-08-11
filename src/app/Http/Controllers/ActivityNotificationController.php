@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
@@ -14,10 +13,10 @@ class ActivityNotificationController
 {
   public function index(): View
   {
-    return view('notification', ["form" => false]);
+    return view('activity-notification.form', ['form' => false]);
   }
 
-  public function submit(Request $request): RedirectResponse
+  public function submit(Request $request): View
   {
     $rules = [
       'lic_name' => ['required', 'max:255'],
@@ -76,17 +75,13 @@ class ActivityNotificationController
     $notification->processUploads($validated["uploads"]);
     $notification->send();
 
-    session()->flash('alert', [
-      'success' => 'Your activity notification has been submitted.'
-    ]);
-
-    return redirect()->route("root");
+    return view('activity-notification.post-submission', ['notification' => $notification]);
   }
 
-  public function view($id): NotificationSubmitted
+  public function view($id): View
   {
     $n = Notification::findOrFail($id);
-    return new NotificationSubmitted($n);
+    return view('activity-notification.post-submission', ['notification' => $n]);
   }
 
   public function resend($id): RedirectResponse

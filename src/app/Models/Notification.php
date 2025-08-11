@@ -21,6 +21,13 @@ class Notification extends Model
         'description', 'activity_leader', 'intouch', 'team_leader_email'
     ];
 
+    protected function casts(): array
+    {
+        return [
+            'date' => 'datetime',
+        ];
+    }
+
     public function send(): void
     {
         $submitter = $this->submitter_email ?? $this->lic_email;
