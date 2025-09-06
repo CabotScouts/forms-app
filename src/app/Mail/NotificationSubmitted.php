@@ -21,7 +21,7 @@ class NotificationSubmitted extends Mailable
 
     public function envelope(): Envelope
     {
-        $reply = $this->notification->submitter_email ? new Address($this->notificication->submitter_email, $this->notificication->submitter_name) : new Address($this->notification->lic_email, $this->notification->lic_name);
+        $reply = $this->notification->submitter_email ? new Address($this->notification->submitter_email, $this->notification->submitter_name) : new Address($this->notification->lic_email, $this->notification->lic_name);
         
         return new Envelope(
             subject: 'Activity Notification Submitted',
