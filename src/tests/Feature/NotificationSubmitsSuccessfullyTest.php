@@ -64,6 +64,42 @@ class NotificationSubmitsSuccessfullyTest extends TestCase
         // 3 - check notification and upload in DB, and mail was sent
         $this->assertDatabaseHas('notifications', ['lic_name' => 'John Smith']);
         $this->assertDatabaseHas('uploads', ['name' => 'risk_assessment.pdf']);
-        Mail::assertQueued(NotificationSubmitted::class);
+        Mail::assertQueued(NotificationSubmitted::class, function(NotificationSubmitted $mail) use ($data) {
+            return $mail->assertHasReplyTo($data['lic_email']);
+        });
+    }
+
+    public function test_notification_is_submitted_with_separate_submitter(): void
+    {
+        // 1 - upload a fake risk assessment
+        $tmp = config('filepond.temporary_files_path', 'filepond');
+        $disk = config('filepond.temporary_files_disk', 'local');
+        Storage::fake($disk);
+
+        $upload = $this->postJson('/filepond/api/process', [
+            'file' => UploadedFile::fake()->create('risk_assessment.pdf', 1),
+        ]);
+
+        $upload->assertStatus(200);
+        $sid = $upload->content();
+        $this->assertGreaterThan(50, strlen($sid));
+
+        // 2 - submit notification using base data and the uploaded file
+        $data = array_merge($this->baseData, [
+            'uploads' => json_encode([$sid]),
+            'submitter_name' => 'Additional submitter',
+            'submitter_email' => 'submitter@isp.com',
+        ]);
+
+        Mail::fake();
+        $response = $this->post(route('notification.submit', $data));
+        $response->assertStatus(200);
+
+        // 3 - check notification and upload in DB, and mail was sent
+        $this->assertDatabaseHas('notifications', ['lic_name' => 'John Smith']);
+        $this->assertDatabaseHas('uploads', ['name' => 'risk_assessment.pdf']);
+        Mail::assertQueued(NotificationSubmitted::class, function(NotificationSubmitted $mail) use ($data) {
+            return $mail->assertHasReplyTo($data['submitter_email']);
+        });
     }
 }
