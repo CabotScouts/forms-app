@@ -72,6 +72,12 @@ class AccidentReportingController
     return view('accident-report.post-submission', ['report' => $n]);
   }
 
+  public function mail($id): AccidentReportSubmitted
+  {
+    $n = AccidentReport::findOrFail($id);
+    return new AccidentReportSubmitted($n);
+  }
+
   public function resend($id)
   {
     $n = AccidentReport::findOrFail($id);

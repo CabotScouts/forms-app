@@ -1,7 +1,7 @@
 <x-mail::message>
 # First Response Validation Request
 
-<small>Submitted: {{ $validation->created_at }}</small>
+<small>Submitted: {{ $validation->created_at->format('d/m/Y H:i') }}</small>
 
 <x-mail::table>
 | Validation Information |                                          |

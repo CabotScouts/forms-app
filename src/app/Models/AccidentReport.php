@@ -19,6 +19,7 @@ class AccidentReport extends Model
         return [
             'when' => 'date',
             'their_dob' => 'date',
+            'created_at' => 'datetime',
             'remove_at' => 'date',
         ];
     }

@@ -38,6 +38,7 @@ Route::controller(FirstAidController::class)->prefix('/first-aid')->group(functi
 
   if(config('app.debug')) {
     Route::get('/view/{id}', 'view');
+    Route::get('/mail/{id}', 'mail');
     Route::get('/resend/{id}', 'resend');
   }
 });
@@ -48,6 +49,7 @@ Route::controller(AccidentReportingController::class)->prefix('/accident-report'
 
   if(config('app.debug')) {
     Route::get('/view/{id}', 'view');
+    Route::get('/mail/{id}', 'mail');
     Route::get('/resend/{id}', 'resend');
   }
 });

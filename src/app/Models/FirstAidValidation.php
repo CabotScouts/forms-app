@@ -19,6 +19,7 @@ class FirstAidValidation extends Model
     {
         return [
             'date' => 'date',
+            'created_at' => 'datetime',
         ];
     }
 

@@ -62,6 +62,12 @@ class FirstAidController
     return new FirstAidValidationSubmitted($v);
   }
 
+  public function mail($id): FirstAidValidationSubmitted
+  {
+    $v = FirstAidValidation::findOrFail($id);
+    return new FirstAidValidationSubmitted($v);
+  }
+
   public function resend($id): RedirectResponse
   {
     $v = FirstAidValidation::findOrFail($id);

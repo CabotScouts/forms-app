@@ -1,7 +1,7 @@
 <x-mail::message>
 # Accident Report
 
-<small>Submitted: {{ $report->created_at }}</small>
+<small>Submitted: {{ $report->created_at->format('d/m/Y H:i') }}</small>
 
 @if($report->further_reporting)
 <x-mail::panel>
