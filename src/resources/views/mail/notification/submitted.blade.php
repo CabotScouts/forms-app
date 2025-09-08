@@ -2,21 +2,21 @@
 # Activity Notification
 
 @if($notification->submitter_name)
-Submitted on {{ $notification->created_at }} by {{ $notification->submitter_name }} ({{ $notification->submitter_email }})
+Submitted on {{ $notification->created_at->format('d/m/Y H:i') }} by {{ $notification->submitter_name }} ({{ $notification->submitter_email }})
 @else
-Submitted on {{ $notification->created_at }} by {{ $notification->lic_name }} ({{ $notification->lic_email }})
+Submitted on {{ $notification->created_at->format('d/m/Y H:i') }} by {{ $notification->lic_name }} ({{ $notification->lic_email }})
 @endif
 
 ## Details
 {{ $notification->description }}
 
 <x-mail::table>
-| Activity Information |                                 |
-| :------------------- | :------------------------------ |
-| Date                 | {{ $notification->date }}       |
-| Leader in Charge     | {{ $notification->lic_name }}   |
-| Email                | {{ $notification->lic_email }}  |
-| Phone                | {{ $notification->lic_phone }}  |
+| Activity Information |                                            |
+| :------------------- | :----------------------------------------- |
+| Date                 | {{ $notification->date->format('d/m/Y') }} |
+| Leader in Charge     | {{ $notification->lic_name }}              |
+| Email                | {{ $notification->lic_email }}             |
+| Phone                | {{ $notification->lic_phone }}             |
 </x-mail::table>
 
 ## Location

@@ -27,6 +27,7 @@ Route::controller(ActivityNotificationController::class)->prefix('/activity-noti
   
   if(config('app.debug')) {
     Route::get('/view/{id}', 'view');
+    Route::get('/mail/{id}', 'mail');
     Route::get('/resend/{id}', 'resend');
   }
 });

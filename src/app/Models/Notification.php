@@ -25,6 +25,7 @@ class Notification extends Model
     {
         return [
             'date' => 'date',
+            'created_at' => 'datetime',
         ];
     }
 

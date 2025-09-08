@@ -84,6 +84,12 @@ class ActivityNotificationController
     return view('activity-notification.post-submission', ['notification' => $n]);
   }
 
+  public function mail($id): NotificationSubmitted
+  {
+    $n = Notification::findOrFail($id);
+    return new NotificationSubmitted($n);
+  }
+
   public function resend($id): RedirectResponse
   {
     $n = Notification::findOrFail($id);

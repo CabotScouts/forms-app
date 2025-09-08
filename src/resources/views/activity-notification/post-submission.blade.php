@@ -24,7 +24,7 @@
 
               <tr>
                 <th scope="row">Submitted</th>
-                <td>{{ $notification->created_at }}</td>
+                <td>{{ $notification->created_at->format('d/m/Y H:i') }}</td>
               </tr>
 
               @if ($notification->submitter_name)
