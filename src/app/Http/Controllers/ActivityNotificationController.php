@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
 
+use App\Exceptions\FileUploadError;
 use App\Mail\NotificationSubmitted;
 use App\Models\Notification;
 
@@ -16,7 +17,7 @@ class ActivityNotificationController
     return view('activity-notification.form', ['form' => false]);
   }
 
-  public function submit(Request $request): View
+  public function submit(Request $request): View|RedirectResponse
   {
     $rules = [
       'lic_name' => ['required', 'max:255'],
@@ -71,8 +72,23 @@ class ActivityNotificationController
     ];
 
     $validated = Validator::make($request->all(), $rules, $messages, $names)->validate();
+
+    try {
+      $uploads = Notification::processUploads($validated["uploads"]);
+    } catch (FileUploadError $e) {
+      report($e);
+
+      session()->flash('alert', [
+        'danger' => 'There was a problem processing your uploaded files, please try re-attaching them and submitting again.'
+      ]);
+
+      return redirect()->route('notification.form')->withInput();
+    }
+    
+
     $notification = Notification::create($validated);
-    $notification->processUploads($validated["uploads"]);
+    $notification->uploads()->saveMany($uploads);
+
     $notification->send();
 
     return view('activity-notification.post-submission', ['notification' => $notification]);

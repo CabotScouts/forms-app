@@ -18,7 +18,7 @@ class FirstAidController
     return view('first-aid.form', ["form" => false]);
   }
 
-  public function submit(Request $request): View
+  public function submit(Request $request): View|RedirectResponse
   {
     $rules = [
       'name' => ['required', 'max:255'],
@@ -49,8 +49,21 @@ class FirstAidController
     ];
 
     $validated = Validator::make($request->all(), $rules, $messages, $names)->validate();
+
+    try {
+      $uploads = FirstAidValidation::processUploads($validated["uploads"]);
+    } catch (FileUploadError $e) {
+      report($e);
+
+      session()->flash('alert', [
+        'danger' => 'There was a problem processing your uploaded files, please try re-attaching them and submitting again.'
+      ]);
+
+      return redirect()->route('fa.form')->withInput();
+    }
+
     $submission = FirstAidValidation::create($validated);
-    $submission->processUploads($validated["uploads"]);
+    $submission->uploads()->saveMany($uploads);
     $submission->send();
 
     return view('first-aid.post-submission');
