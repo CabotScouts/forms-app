@@ -11,7 +11,7 @@
 ## Improvements to add
 ### User Experience
 * fix the form modified flag not preventing data loss when returned to invalid fields
-* show form data after submission + printable view
+* ~~show form data after submission + printable view~~
 * select Group from dropdown -> get GLV/TL email from this
 
 ### Uploads
