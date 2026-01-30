@@ -106,11 +106,6 @@
                   'name' => 'file',
                   'required' => true,
               ])
-
-              <small class="form-text text-muted">
-                Multiple files can be submitted if necessary (maximum 5 files, 3MB per file, accepted filetypes are pdf,
-                doc, docx, xls, xlsx).
-              </small>
             </div>
 
           </div>
