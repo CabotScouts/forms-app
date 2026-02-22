@@ -7,8 +7,10 @@
         <div class="card-body">
           <h3 class="card-title">Activity Notification</h3>
           <p class="card-text">
-            This form is to notify the Cabot District team about activites which are taking place outside of the
-            District, or which fall within the definition of being an Adventurous Activity (POR 9.7).
+            This form is to notify the Cabot District team about activities which are taking place outside of the Defined 
+            Urban Area, or for which the District requires further checks to be undertaken. Read the 
+            <a href="https://cabotscouts.org.uk/volunteers/activities/" target="_blank">Activity Notification Requirements</a> 
+            to determine if you need to submit a notification.
           </p>
         </div>
         <div class="card-footer">
