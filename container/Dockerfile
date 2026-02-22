@@ -48,6 +48,7 @@ ARG UID
 ARG GID
 RUN addgroup -g ${GID} --system runner
 RUN adduser -G runner --system -D -s /bin/sh -u ${UID} runner
+RUN cd /usr/bin && ln -s php83 php
 
 COPY crontab /etc/crontabs/runner
 COPY nginx.conf /etc/nginx/nginx.conf
