@@ -84,11 +84,11 @@
                 criteria your course covered, if you have this
               </li>
               <li>
-                If you attended a <em>First Aid at Work</em>, <em>Emergency First Aid at Work</em> or <em>RYA First
-                  Aid</em> course and didn't cover the additional required topics (sepsis, meningitis, dental injuries
-                - evidenced with the above checklist), the certificate from the relevent <a
-                  href="https://hampshire-scouts.thinkific.com/" target="_blank">Hampshire e-learning conversion
-                  course</a></li>
+                If you attended a <em>First Aid at Work</em>, <em>Emergency First Aid at Work</em>, or <em>RYA First Aid</em> course
+                you will also need to complete the conversion e-learning 
+                <a href="https://learn.scouts.org.uk/ilp/pages/description.jsf?menuId=1108#/users/@self/catalogues/1700/courses/15384052/description" target="_blank" rel="nofollow noreferrer">on the Scout Learning system</a> 
+                to cover the First Response elements you have not already covered
+              </li>
             </ul>
             </p>
 
