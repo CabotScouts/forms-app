@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
 use App\Exceptions\FileUploadError;
@@ -33,7 +34,7 @@ class ActivityNotificationController
       'number_scouts' => ['nullable', 'gte:0'],
       'number_explorers' => ['nullable', 'gte:0'],
       'number_adults' => ['nullable', 'gte:0'],
-      'date' => ['required', 'date'],
+      'date' => ['required', 'date', Rule::date()->after(today()->subWeeks(1))],
       'location' => ['required'],
       'description' => ['required'],
       'activity_leader' => ['nullable', 'max:255'],

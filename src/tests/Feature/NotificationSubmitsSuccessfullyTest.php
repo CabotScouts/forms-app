@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\{Mail, Storage};
 use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
@@ -23,7 +24,6 @@ class NotificationSubmitsSuccessfullyTest extends TestCase
         'lic_phone' => '01234567890',
         'group' => '1st Testington',
         'section' => 'Scouts',
-        'date' => '2030-01-01',
         'location' => 'Everest',
         'description' => 'Climbing a mountain',
         'intouch' => 'Carrier pigeon',
@@ -55,6 +55,7 @@ class NotificationSubmitsSuccessfullyTest extends TestCase
         // 2 - submit notification using base data and the uploaded file
         $data = array_merge($this->baseData, [
             'uploads' => json_encode([$sid]),
+            'date' => Carbon::now()->isoFormat("YYYY-MM-DD"),
         ]);
 
         Mail::fake();
@@ -87,6 +88,7 @@ class NotificationSubmitsSuccessfullyTest extends TestCase
         // 2 - submit notification using base data and the uploaded file
         $data = array_merge($this->baseData, [
             'uploads' => json_encode([$sid]),
+            'date' => Carbon::now()->isoFormat("YYYY-MM-DD"),
             'submitter_name' => 'Additional submitter',
             'submitter_email' => 'submitter@isp.com',
         ]);
@@ -101,5 +103,32 @@ class NotificationSubmitsSuccessfullyTest extends TestCase
         Mail::assertQueued(NotificationSubmitted::class, function(NotificationSubmitted $mail) use ($data) {
             return $mail->assertHasReplyTo($data['submitter_email']);
         });
+    }
+
+    public function test_notification_in_past_is_rejected(): void
+    {
+        // 1 - upload a fake risk assessment
+        $tmp = config('filepond.temporary_files_path', 'filepond');
+        $disk = config('filepond.temporary_files_disk', 'local');
+        Storage::fake($disk);
+
+        $upload = $this->postJson('/filepond/api/process', [
+            'file' => UploadedFile::fake()->create('risk_assessment.pdf', 1),
+        ]);
+
+        $upload->assertStatus(200);
+        $sid = $upload->content();
+        $this->assertGreaterThan(50, strlen($sid));
+
+        // 2 - submit notification using base data and the uploaded file
+        $data = array_merge($this->baseData, [
+            'uploads' => json_encode([$sid]),
+            'date' => Carbon::now()->subMonths(1)->isoFormat("YYYY-MM-DD"),
+        ]);
+
+        Mail::fake();
+        $response = $this->post(route('notification.submit', $data));
+        $response->assertStatus(302);
+        $response->assertOnlyInvalid(['date']);
     }
 }
