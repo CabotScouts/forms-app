@@ -4,10 +4,9 @@ namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Address;
-use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Mail\Mailables\{Address, Content, Envelope, Headers};
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\{Str, Uri};
 
 use App\Models\Notification;
 
@@ -26,6 +25,17 @@ class NotificationSubmitted extends Mailable
         return new Envelope(
             subject: 'Activity Notification Submitted',
             replyTo: [$reply],
+        );
+    }
+
+    public function headers(): Headers
+    {
+        $fqdn = Uri::of(config('app.url'))->host();
+        return new Headers(
+            messageId: "notification-" . $this->notification->id . "@" . $fqdn,
+            text: [
+                'X-Entity-Ref-ID' => Str::random(40),
+            ],
         );
     }
 
