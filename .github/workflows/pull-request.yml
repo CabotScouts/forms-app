@@ -1,0 +1,82 @@
+concurrency:
+  group: pr-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+name: Pull Request
+
+on:
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    name: Check changed files
+    outputs:
+      source: ${{ steps.changes.outputs.source }}
+      container: ${{ steps.changes.outputs.container }}
+    steps:
+      - name: Check changed files
+        uses: dorny/paths-filter@fbd0ab8f3e69293af611ebaee6363fc25e6d187d # v4.0.1
+        id: changes
+        with:
+          filters: |
+            source:
+              - 'src/*.php'
+              - 'src/**/*.php'
+            container:
+              - 'Dockerfile'
+              - 'container/*'
+
+  app-tests:
+    needs: changes
+    if: ${{ needs.changes.outputs.source == 'true' }}
+    runs-on: ubuntu-latest
+    permissions: {}
+    name: Run app tests
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Install dependencies
+        uses: php-actions/composer@v6
+        with:
+          php_version: "8.5"
+          working_dir: "src"
+
+      - name: Copy in .env for testing
+        run: cp testing/tests.env src/.env
+
+      - name: Generate key
+        run: cd src && php artisan key:generate
+
+      - name: Run tests
+        run: cd src && php artisan test --log-junit ../testing/phpunit-junit.xml
+
+      - name: Test report
+        uses: dorny/test-reporter@v3 # PIN ME
+        if: ${{ !cancelled() }}
+        with:
+          name: App tests
+          path: testing/*.xml
+          reporter: phpunit-junit 
+
+  container-test-build:
+    needs: changes
+    if: ${{ needs.changes.outputs.container == 'true' }}
+    runs-on: ubuntu-latest
+    permissions: {}
+    name: Test build container
+    steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
+
+      - name: Build image
+        uses: docker/build-push-action@v7
+        with:
+          push: false
