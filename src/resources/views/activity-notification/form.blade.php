@@ -122,10 +122,14 @@
             <div class="form-row">
               @foreach (['squirrels', 'beavers', 'cubs', 'scouts', 'explorers', 'adults'] as $section)
                 <div class="form-group col-6 col-md-2">
-                  <label for="number_{{ $section }}">{{ ucfirst($section) }}</label>
+                  <label for="number_{{ $section }}">
+                    {{ ucfirst($section) }}
+                    @if ($section == 'adults')<span class="text-danger">*</span>@endif
+                  </label>
                   <input type="number" min="0"
                     class="form-control @error('number_' . $section) is-invalid @enderror"
                     id="number_{{ $section }}" name="number_{{ $section }}"
+                    @if ($section == 'adults') required @endif
                     value="{{ old('number_' . $section, $form) }}">
                 </div>
               @endforeach

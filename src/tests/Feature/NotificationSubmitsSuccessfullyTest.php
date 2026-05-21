@@ -24,6 +24,7 @@ class NotificationSubmitsSuccessfullyTest extends TestCase
         'lic_phone' => '01234567890',
         'group' => '1st Testington',
         'section' => 'Scouts',
+        'number_adults' => 2,
         'location' => 'Everest',
         'description' => 'Climbing a mountain',
         'intouch' => 'Carrier pigeon',
