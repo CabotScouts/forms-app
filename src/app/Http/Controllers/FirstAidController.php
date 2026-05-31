@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
 
 use App\Mail\FirstAidValidationSubmitted;
-use App\Models\FirstAidValidation;
+use App\Models\{FirstAidValidation, Upload};
 
 class FirstAidController
 {
@@ -51,7 +51,7 @@ class FirstAidController
     $validated = Validator::make($request->all(), $rules, $messages, $names)->validate();
 
     try {
-      $uploads = FirstAidValidation::processUploads($validated["uploads"]);
+      $uploads = Upload::processUploads($validated["uploads"]);
     } catch (FileUploadError $e) {
       report($e);
 

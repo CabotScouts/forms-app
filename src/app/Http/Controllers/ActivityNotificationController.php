@@ -9,7 +9,7 @@ use Illuminate\View\View;
 
 use App\Exceptions\FileUploadError;
 use App\Mail\NotificationSubmitted;
-use App\Models\Notification;
+use App\Models\{Notification, Upload};
 
 class ActivityNotificationController
 {
@@ -75,7 +75,7 @@ class ActivityNotificationController
     $validated = Validator::make($request->all(), $rules, $messages, $names)->validate();
 
     try {
-      $uploads = Notification::processUploads($validated["uploads"]);
+      $uploads = Upload::processUploads($validated["uploads"]);
     } catch (FileUploadError $e) {
       report($e);
 
