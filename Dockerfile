@@ -44,6 +44,7 @@ RUN apk add --no-cache \
   php85-xmlreader \
   php85-xmlwriter \
   php85-zip \
+  redis \
   sqlite \
   supercronic \
   supervisor
@@ -58,6 +59,7 @@ COPY container/nginx.conf /etc/nginx/nginx.conf
 COPY container/conf.d /etc/nginx/conf.d/
 COPY container/fpm-pool.conf /etc/php85/php-fpm.d/www.conf
 COPY container/php.ini /etc/php85/conf.d/custom.ini
+COPY container/redis.conf /etc/redis/redis.conf
 COPY container/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY container/init /init
 
