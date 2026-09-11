@@ -1,10 +1,10 @@
-FROM composer:latest AS build
+FROM composer:2.2 AS build
 
 WORKDIR /build
 COPY src ./
 RUN composer install --optimize-autoloader --no-interaction --no-progress
 
-FROM alpine:latest
+FROM alpine:3.24
 
 WORKDIR /data
 
@@ -47,8 +47,6 @@ RUN apk add --no-cache \
   sqlite \
   supercronic \
   supervisor
-
-RUN ln -s /usr/bin/php85 /usr/bin/php
 
 RUN addgroup -g 1000 --system runner
 RUN adduser -G runner --system -D -s /bin/sh -u 1000 runner
