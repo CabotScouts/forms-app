@@ -8,8 +8,8 @@
   "license": "MIT",
   "require": {
     "google/apiclient": "^2.10",
-    "laravel/framework": "^12.0",
-    "laravel/tinker": "^2.9",
+    "laravel/framework": "^13.0",
+    "laravel/tinker": "^3.0",
     "marvinlabs/laravel-discord-logger": "^1.4.3",
     "sopamo/laravel-filepond": "^1.5",
     "teampanfu/laravel-hcaptcha": "^1.1"
