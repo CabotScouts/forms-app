@@ -1,6 +1,4 @@
 #!/bin/sh
-cd /data & composer install --optimize-autoloader --no-interaction --no-progress
-
 cd /data && source .env
 if [[ -z ${APP_KEY} ]]; then
     cd /data && php artisan key:generate
