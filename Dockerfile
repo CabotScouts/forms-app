@@ -51,6 +51,7 @@ RUN apk add --no-cache \
 
 RUN addgroup -g 1000 --system runner
 RUN adduser -G runner --system -D -s /bin/sh -u 1000 runner
+RUN chown runner:runner ./
 
 COPY --chown=runner src ./
 COPY --from=build --chown=runner /build/vendor vendor/
