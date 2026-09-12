@@ -4,4 +4,8 @@ if [[ -z ${APP_KEY} ]]; then
     cd /data && php artisan key:generate
 fi
 
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+
 /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
