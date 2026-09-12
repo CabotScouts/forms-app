@@ -67,6 +67,6 @@ RUN chmod +x /init
 RUN chown -R runner:runner /run /var/lib/nginx /var/log/nginx /etc/crontabs/runner
 
 USER runner
-EXPOSE 80
+EXPOSE 8080
 ENTRYPOINT [ "/init" ]
 HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1/up || exit 1
