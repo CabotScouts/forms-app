@@ -71,6 +71,6 @@ RUN chown -R runner:runner /run /redis /var/lib/nginx /var/log/nginx /etc/cronta
 USER runner
 EXPOSE 8080
 ENTRYPOINT [ "/init" ]
-HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1/up || exit 1
+HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1:8080/up || exit 1
 
 LABEL org.opencontainers.image.source=https://github.com/CabotScouts/forms-app
