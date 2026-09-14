@@ -8,6 +8,7 @@ services:
     volumes:
       - '.env:/data/.env:rw'
       - 'storage:/data/storage/app/'
+      - 'redis:/redis'
     networks:
       - mariadb
     ports:
@@ -15,6 +16,7 @@ services:
 
 volumes:
   storage:
+  redis:
 networks:
   mariadb:
     external: true

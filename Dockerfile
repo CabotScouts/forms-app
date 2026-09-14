@@ -65,7 +65,8 @@ COPY container/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY container/init /init
 
 RUN chmod +x /init
-RUN chown -R runner:runner /run /var/lib/nginx /var/log/nginx /etc/crontabs/runner
+RUN mkdir /redis
+RUN chown -R runner:runner /run /redis /var/lib/nginx /var/log/nginx /etc/crontabs/runner
 
 USER runner
 EXPOSE 8080
