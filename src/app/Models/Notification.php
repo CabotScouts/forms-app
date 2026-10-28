@@ -45,7 +45,7 @@ class Notification extends Model
 
     public function prunable(): Builder
     {
-        return static::where('date', '<=', now()->subMonths(3));
+        return static::where('date', '<=', now()->subMonths(12));
     }
 
     public function pruning(): void
