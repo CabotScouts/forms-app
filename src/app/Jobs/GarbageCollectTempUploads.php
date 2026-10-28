@@ -13,7 +13,7 @@ class GarbageCollectTempUploads implements ShouldQueue
 
     public function handle(): void
     {
-        $limit = config('filepond.gc_max_file_minutes_age', 60 * 6);
+        $limit = config('filepond.gc_max_file_minutes_age', 60 * 24);
 
         if (!is_int($limit) || $limit < 0) {
             return;

@@ -31,7 +31,7 @@ class FirstAidValidation extends Model
 
     public function prunable(): Builder
     {
-        return static::where('updated_at', '<=', now()->subMonths(3));
+        return static::where('updated_at', '<=', now()->subMonths(12));
     }
 
     public function pruning(): void
